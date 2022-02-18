@@ -9,6 +9,7 @@ import { RegistroComponent } from './Common/registro/registro.component';
 import { ComponentsAdminComponent } from './components-admin/components-admin.component';
 import { ComponentsUserComponent } from './components-user/components-user.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     RegistroComponent,
     ComponentsAdminComponent,
     ComponentsUserComponent,
-    NavigationComponent
+    NavigationComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
