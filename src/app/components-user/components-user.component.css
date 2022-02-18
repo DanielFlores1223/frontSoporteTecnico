@@ -1,0 +1,27 @@
+.card{
+    width: 90%;
+    margin-left: 15%;
+    margin-right: 1.2%;
+    float: right;   
+}
+h5{
+    color: #A5A5A5;
+}
+.wraper{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 10px;
+   grid-row-gap: 3em;
+   margin-right: 5%;
+   margin-bottom: 10px;
+   
+}
+span{
+    float: right;
+}
+a{
+    margin-top: 20px;
+    margin-bottom: 12px;
+    float: right;
+    text-decoration: none;
+}

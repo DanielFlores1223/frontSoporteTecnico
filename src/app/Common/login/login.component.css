@@ -10,7 +10,7 @@ body {
     background-color: #eee;
     height: 100vh;
     font-family: sans-serif;
-    background: linear-gradient(to top, #fff 10%, rgba(36, 54, 212, 0.4) 90%) no-repeat
+    background: linear-gradient(to top, #fff 10%, rgba(236, 105, 28, 0.89) 90%) no-repeat
 }
 
 .wrapper {
@@ -25,7 +25,7 @@ body {
   
     font-size: 3rem;
     font-weight: bold;
-    color: #091974;
+    color: #fda622;
     font-style: italic
 }
 
@@ -42,6 +42,11 @@ body {
     border: 1px solid #686868;
     color: #686868;
     margin-bottom: 10px;
+}
+.input-field span i{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 .input-field:hover {
