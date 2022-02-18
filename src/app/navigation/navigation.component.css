@@ -1,0 +1,36 @@
+.d-flex {
+    width: 100px;
+    height: 130%;
+    margin-top: -13px!important;
+    margin-bottom: -32%!important;
+    float: left;
+    position: absolute;
+}
+
+.nav-link {
+    border-radius: 0px !important;
+    transition: all 0.5s;
+    width: 100px;
+    display: flex;
+    flex-direction: column
+}
+
+.nav-link small {
+    font-size: 15px;
+    color:rgb(5, 14, 141)
+}
+
+.nav-link:hover {
+    background-color: #52525240 !important
+}
+
+.nav-link .fa {
+    transition: all 1s;
+    font-size: 28px;
+    color:rgb(8, 65, 114)
+}
+
+.nav-link:hover .fa {
+    transform: rotate(360deg)
+}
+
