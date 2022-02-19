@@ -4,6 +4,10 @@
     margin-right: 1.2%;
     float: right;   
 }
+h4{
+    color: #A5A5A5;
+    float: left;
+}
 h5{
     color: #A5A5A5;
 }
@@ -14,7 +18,7 @@ h5{
    grid-row-gap: 3em;
    margin-right: 5%;
    margin-bottom: 10px;
-   
+   margin-top: 10px;
 }
 span{
     float: right;
@@ -25,3 +29,29 @@ a{
     float: right;
     text-decoration: none;
 }
+.filters{
+    height: 50px;
+    padding: 30px!important;
+    margin-bottom: 50px;
+    margin-left: 20px!important;
+}
+.form-control{
+    margin-bottom: -35px;
+    border-color: #A5A5A5!important;
+}
+.form-outline{
+    margin-left: 65%!important;
+    height: 10PX;
+    margin-bottom: 10PX!important;
+}
+
+label{
+    margin-right: 10px;
+    margin-left: 5px;
+}
+input{
+    padding-left: 5px;
+    color: rgb(124, 124, 124);
+    margin: #A5A5A5!important;
+}
+
