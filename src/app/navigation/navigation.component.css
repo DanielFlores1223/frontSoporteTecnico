@@ -1,8 +1,7 @@
 .d-flex {
     width: 100px;
-    height: 40%;
+    height: auto;
     margin-top: -13px!important;
-
     float: left;
     position: absolute;
 }

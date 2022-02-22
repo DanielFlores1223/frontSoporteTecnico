@@ -10,6 +10,7 @@ import { ComponentsAdminComponent } from './components-admin/components-admin.co
 import { ComponentsUserComponent } from './components-user/components-user.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReportsComponent } from './reports/reports.component';
+import { GenericModalComponent } from './Common/generic-modal/generic-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReportsComponent } from './reports/reports.component';
     ComponentsAdminComponent,
     ComponentsUserComponent,
     NavigationComponent,
-    ReportsComponent
+    ReportsComponent,
+    GenericModalComponent
   ],
   imports: [
     BrowserModule,

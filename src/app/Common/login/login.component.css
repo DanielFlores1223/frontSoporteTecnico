@@ -216,3 +216,12 @@ a:hover {
     background-repeat:no-repeat;
     margin-left: 3%;
 }
+footer{
+    margin-top: -5%;
+    margin-bottom: 3%!important;
+    width: 100%;
+    position:absolute;
+    padding-top: -20%;
+  overflow: visible;
+  top:100%;
+}
