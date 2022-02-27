@@ -11,6 +11,7 @@ import { ComponentsUserComponent } from './components-user/components-user.compo
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReportsComponent } from './reports/reports.component';
 import { GenericModalComponent } from './Common/generic-modal/generic-modal.component';
+import { PerfilUserComponent } from './components-user/perfil-user/perfil-user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GenericModalComponent } from './Common/generic-modal/generic-modal.comp
     ComponentsUserComponent,
     NavigationComponent,
     ReportsComponent,
-    GenericModalComponent
+    GenericModalComponent,
+    PerfilUserComponent
   ],
   imports: [
     BrowserModule,
