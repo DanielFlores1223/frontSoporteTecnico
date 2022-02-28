@@ -12,7 +12,9 @@ import { NavigationComponent } from './Common/navigation/navigation.component';
 import { ReportsComponent } from './Admin/reports/reports.component';
 import { GenericModalComponent } from './Common/generic-modal/generic-modal.component';
 import { PerfilUserComponent } from './User/perfil-user/perfil-user.component';
-
+import { NewTicketComponent } from './User/new-ticket/new-ticket.component';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,14 +25,18 @@ import { PerfilUserComponent } from './User/perfil-user/perfil-user.component';
     NavigationComponent,
     ReportsComponent,
     GenericModalComponent,
-    PerfilUserComponent
+    PerfilUserComponent,
+    NewTicketComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DlDateTimeDateModule,  // <--- Determines the data type of the model
+    DlDateTimePickerModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [FormsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

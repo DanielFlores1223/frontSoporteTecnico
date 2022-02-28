@@ -8,7 +8,7 @@ import { NavigationComponent } from './Common/navigation/navigation.component';
 import { RegistroComponent } from './Common/registro/registro.component';
 import { ComponentsUserComponent } from './User/components-user/components-user.component';
 import { PerfilUserComponent } from './User/perfil-user/perfil-user.component';
-
+import { NewTicketComponent } from './User/new-ticket/new-ticket.component';
 
 const routes: Routes = [
   /*Admin*/
@@ -22,6 +22,8 @@ const routes: Routes = [
   /*User*/
   {path:'userHome',component:ComponentsUserComponent, canActivate: [ComponentsUserComponent]},
   {path:'perfilUser',component:PerfilUserComponent, canActivate: [PerfilUserComponent]},
+  {path:'newTicket',component:NewTicketComponent, canActivate: [NewTicketComponent]},
+  
 /*Rutas por defecto*/
   {path:'',redirectTo:'paginaprincipal', pathMatch:'full'},
   {path:'**',redirectTo:'paginaprincipal', pathMatch:'full'}

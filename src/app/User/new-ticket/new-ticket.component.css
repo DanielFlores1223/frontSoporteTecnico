@@ -1,4 +1,14 @@
-.card {
+
+ 
+ h4 {
+    color: #a5a5a5;
+    float: left;
+    height: 50px;
+    padding: 30px !important;
+    margin-bottom: 30px;
+    margin-left: 20px !important;
+  }
+  .card {
     width: 90%;
     margin-left: 15%;
     margin-right: 1.2%;
@@ -6,12 +16,6 @@
     margin-bottom: 10px !important;
   }
 
-.img-account-profile {
-    height: 10rem;
-}
-.rounded-circle {
-    border-radius: 50% !important;
-}
 .card {
     box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
 }
@@ -75,4 +79,11 @@
 .boton-cargar:hover {
     color: #ffffff;
     background-color: #68919c;
+}
+.conteiner{
+    margin-left: -3%;
+}
+.dia{
+    height: 46px!important;
+    
 }
