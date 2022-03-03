@@ -1,0 +1,38 @@
+* {
+  width: auto;
+}
+
+.card {
+  width: 90%;
+  margin-left: 15%;
+  margin-right: 1.2%;
+  float: right;
+  margin-bottom: 10px !important;
+}
+h4 {
+  color: #a5a5a5;
+  float: left;
+  padding: 3%;
+}
+.btn{
+    padding: 10px;
+    margin-bottom: 25px;
+    margin-left: 15px;
+}
+.button-row{
+    margin-top: -15%;
+}
+.table{
+    margin-right: -10%!important;
+  
+}
+.container{
+    position:static
+}
+.table-hover{
+    margin-left: -10%;
+    margin-top: -40%;
+}
+.flex{
+    margin-bottom: 10%;
+}

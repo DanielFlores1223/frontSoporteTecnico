@@ -1,38 +1,44 @@
-.cards {
+h4 {
+    color: #a5a5a5;
+    float: left;
+    height: 50px;
+    padding: 30px !important;
+    margin-bottom: 30px;
+    margin-left: 20px !important;
+  }
+  .card {
     width: 90%;
     margin-left: 15%;
     margin-right: 1.2%;
     float: right;
-    background-color: rgba(235, 235, 235, 0.315);
-    margin-bottom: 10px !important;
+    border-color: 1px solid  rgba(235, 235, 235, 0.315);
+    margin-bottom: 25px !important;
   }
-
-.img-account-profile {
-    height: 10rem;
-}
-.rounded-circle {
-    border-radius: 50% !important;
-}
-.cards {
+  .cards {
+      width: 90%;
+      margin-left: 15%;
+      margin-right: 1.2%;
+      float: right;
+      
+      margin-bottom: 10px !important;
+    }
+  .card {
     box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-}
-.card {
-    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-}
-.card .card-header {
+  }
+  .card .card-header {
     font-weight: 500;
-    
-}
-.card-header:first-child {
+  }
+  .card-header:first-child {
     border-radius: 0.35rem 0.35rem 0 0;
-}
-.card-header {
+  }
+  .card-header {
     padding: 1rem 1.35rem;
     margin-bottom: 0;
     background-color: rgba(33, 40, 50, 0.03);
-    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
-}
-.form-control, .dataTable-input {
+    border-bottom: 4px solid #0061f2;
+  }
+  .form-control,
+  .dataTable-input {
     display: block;
     width: 100%;
     padding: 0.875rem 1.125rem;
@@ -48,13 +54,13 @@
     appearance: none;
     border-radius: 0.35rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.nav-borders .nav-link.active {
+  }
+  
+  .nav-borders .nav-link.active {
     color: #0061f2;
     border-bottom-color: #0061f2;
-}
-.nav-borders .nav-link {
+  }
+  .nav-borders .nav-link {
     color: #69707a;
     border-bottom-width: 0.125rem;
     border-bottom-style: solid;
@@ -65,9 +71,9 @@
     padding-right: 0;
     margin-left: 1rem;
     margin-right: 1rem;
-}
-
-.boton-cargar {
+  }
+  
+  .boton-cargar {
     background-color: transparent;
     font-size: 15px;
     font-weight: bold;
@@ -76,22 +82,17 @@
     color: #68919c;
     border-radius: 15px;
     border: #68919c 2px solid;
-}
-.boton-cargarI{
-    background-color: transparent;
-    font-size: 15px;
-    font-weight: bold;
-    transition: 200ms;
-    color: #68919c;
-    border-radius: 15px;
-    border: #68919c 2px solid;
-}
-
-.boton-cargar:hover {
+    margin-top: 3%;
+  }
+  
+  .boton-cargar:hover {
     color: #ffffff;
     background-color: #68919c;
-}
-.boton-cargarI:hover {
-    color: #ffffff;
-    background-color: #68919c;
-}
+  }
+  .conteiner {
+    margin-left: -3%;
+  }
+  .dia {
+    height: 46px !important;
+  }
+  

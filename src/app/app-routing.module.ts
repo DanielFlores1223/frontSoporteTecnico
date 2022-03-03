@@ -9,20 +9,24 @@ import { RegistroComponent } from './Common/registro/registro.component';
 import { ComponentsUserComponent } from './User/components-user/components-user.component';
 import { PerfilUserComponent } from './User/perfil-user/perfil-user.component';
 import { NewTicketComponent } from './User/new-ticket/new-ticket.component';
+import { UsersListComponent } from './Admin/users-list/users-list.component';
+import { ComplaintsMailboxComponent } from './User/complaints-mailbox/complaints-mailbox.component';
 
 const routes: Routes = [
   /*Admin*/
-  {path:'adminHome',component:ComponentsAdminComponent, canActivate: [ComponentsAdminComponent]},
-  {path:'reports',component:ReportsComponent, canActivate: [ReportsComponent]},
+  {path:'adminHome',component:ComponentsAdminComponent},
+  {path:'reports',component:ReportsComponent},
+  {path: 'usuarios', component:UsersListComponent},
   /*common*/
-  {path:'modal',component:GenericModalComponent, canActivate: [GenericModalComponent]},
-  {path:'loguin',component:LoginComponent, canActivate: [LoginComponent]},
-  {path:'navigation',component:NavigationComponent, canActivate: [NavigationComponent]},
-  {path:'registro',component:RegistroComponent, canActivate: [RegistroComponent]},
+  {path:'modal',component:GenericModalComponent},
+  {path:'login',component:LoginComponent},
+  {path:'navigation',component:NavigationComponent},
+  {path:'registro',component:RegistroComponent},
   /*User*/
-  {path:'userHome',component:ComponentsUserComponent, canActivate: [ComponentsUserComponent]},
-  {path:'perfilUser',component:PerfilUserComponent, canActivate: [PerfilUserComponent]},
-  {path:'newTicket',component:NewTicketComponent, canActivate: [NewTicketComponent]},
+  {path:'userHome',component:ComponentsUserComponent},
+  {path:'perfilUser',component:PerfilUserComponent},
+  {path:'newTicket',component:NewTicketComponent},
+  {path:'buzon',component:ComplaintsMailboxComponent},
   
 /*Rutas por defecto*/
   {path:'',redirectTo:'paginaprincipal', pathMatch:'full'},
