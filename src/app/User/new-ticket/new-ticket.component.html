@@ -1,0 +1,225 @@
+<div class="card">
+  <h4 class="card-title">Nuevo Ticket</h4>
+  <div class="conteiner col-xl-12">
+    <!-- Account details card-->
+    <div class="card mb-4">
+      <div class="card-header">Datos de solicitud</div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label class="small mb-1" for="inputUsername"
+              >Nombre del problema</label
+            >
+            <input
+              class="form-control"
+              id="inputUsername"
+              type="text"
+              placeholder="Titulo del incidente"
+              value=""
+            />
+          </div>
+
+          <!-- Usuario-->
+          <div class="row gx-3 mb-3">
+            <div class="col-md-4">
+              <label class="small mb-1" for="inputFirstName">Nombre del solicitante</label>
+              
+              <input
+                class="form-control"
+                id="inputFirstName"
+                type="text"
+                placeholder="Tania"
+                value=""
+                readonly
+              />
+            </div>
+           
+            <div class="col-md-4">
+              <label class="small mb-1" for="inputLastName"
+                >Apellido Paterno</label
+              >
+              <input
+                class="form-control"
+                id="inputLastName"
+                type="text"
+                placeholder="Jiménez"
+                value=""
+                readonly
+              />
+            </div>
+            
+            <div class="col-md-4">
+              <label class="small mb-1" for="inputLastName"
+                >Apellido Materno</label
+              >
+              <input
+                class="form-control"
+                id="inputLastName"
+                type="text"
+                placeholder="Márquez"
+                value=""
+                readonly
+              />
+            </div>
+          </div>
+        </form>
+    </div>
+    </div> 
+  </div>
+
+ <!-- Account details card-->
+  <div class="conteiner col-xl-12">
+    <div class="card mb-4">
+      <div class="card-header">Detalles del servicio</div>
+        <div class="card-body">
+          <form>
+            <div class="row gx-3 mb-3">
+              <!-- Servicio-->
+              <div class="col-md-3">
+                <label class="small mb-1" for="inputFirstName">Servicio</label>  
+                <select class="form-control form-select dia ml-3" aria-label=".form-select-lg example">
+                  <option selected>Tipo de ticket</option>
+                  <option value="1">Internet</option>
+                  <option value="2">Software (Programas)</option>
+                  <option value="3">Hardware (Equipo)</option>
+                </select>
+              </div>
+              <!-- Fecha-->
+              <div class="col-md-3">
+                <label class="small mb-1" for="inputLastName"
+                  >Fecha de solicitud (DD/MM/AAAA)</label>
+                  <input
+                      class="form-control dia"
+                      type="date"
+                      id="start"
+                      name="trip-start"
+                      value="2018-07-22"
+                      min="2018-01-01"
+                      max="2022-12-31"
+                  />
+              </div>
+              <div class="col-md-3">
+                <label class="small mb-1" for="inputLastName">Hora</label>
+                  <input
+                      class="form-control dia"
+                      type="time"
+                      
+                  />
+              </div>
+              <div class="col-md-3">
+                <label class="small mb-1" for="inputLastName"
+                  >Técnico disponible</label
+                >
+                <input
+                  class="form-control"
+                  id=""
+                  type="text"
+                  placeholder="Arnulfo Ortega"
+                  value=""
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1" for="inputEmailAddress"
+                >Identificación del equipo</label
+              >
+              <select class="form-control form-select dia ml-3" aria-label=".form-select-lg example">
+                <option selected>Elige el dispositivo</option>
+                <option value="1">Pc Escritorio</option>
+                <option value="2">Pc Portátil</option>
+                <option value="3">Monitor</option>
+                <option value="4">Impresora</option>
+                <option value="5">Teclado</option>
+                <option value="6">Mouse</option>
+                <option value="7">Escaner</option>
+                <option value="8">Teléfono</option>
+                <option value="9">Otro</option>
+              </select>
+            </div>
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (Dependencia)-->
+              <div class="col-md-4">
+                <label class="small mb-1" for="inputOrgName">Área que solicita</label>
+                <input
+                  class="form-control"
+                  id=""
+                  type="text"
+                  placeholder="Enter your organization name"
+                  value="Finanzas"
+                />
+              </div>
+              
+              <div class="col-md-4">
+                <label class="small mb-1" for="inputLocation">Teléfono</label>
+                <input
+                  class="form-control"
+                  id=""
+                  type="number"
+                  placeholder="555-659-54-78"
+                />
+              </div>
+                <!-- Form Group (Extención)-->
+                <div class="col-md-4">
+                  <label class="small mb-1" for="inputPhone">Extención</label>
+                  <input
+                    class="form-control"
+                    id="inputPhone"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    value="11819"
+                  />
+                </div>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-4">
+                <label class="small mb-1" for="inputBirthday">Observaciónes</label>
+                <input
+                  class="form-control"
+                  id="inputBirthday"
+                  type="text"
+                  name=""
+                  placeholder="Datos extra"
+                  value=""
+                /> 
+              </div>
+              <div class="col-md-4">
+                <label for="formFile" class="small mb-1">¿Tienes imágen?</label>
+                <input class="form-control dia" type="file" id="formFile">
+              </div>
+              <div class="col-md-4">
+                <label for="formFile" class="small mb-1">¿El procedimiento requiere copia de seguridad?</label>
+              <div class="form-check form-check-inline mt-3">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Si</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">No</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">No lo sé</label>
+              </div>
+              </div>
+            </div>
+            <button class="btn boton-cargar" type="button">
+              Enviar solicitud
+            </button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-navigation></app-navigation>
+
+
+
+
+
+
+  
+    
+    
+ 
+

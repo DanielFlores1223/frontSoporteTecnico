@@ -1,0 +1,83 @@
+* {
+    width: auto;
+  }
+  .form-outline {
+    float: left;
+    margin-left: 68% !important;
+  }
+  .form-outline {
+    height: 10px;
+    float: left;
+    width: 250px;
+  }
+  .form-control {
+    width: 230px;
+    margin-bottom: -20px;
+    margin-left: 10%;
+  }
+  .input-group{
+      margin-top: 0px;
+      margin-bottom: 20px;
+      padding: 0%;
+  }
+  
+  label {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  .card {
+    width: 90%;
+    margin-left: 15%;
+    margin-right: 1.2%;
+    float: right;
+    margin-bottom: 10px !important;
+  }
+  .card-title {
+    margin-left:2%!important;
+    margin-top: 2%!important;
+  }
+  h4 {
+    color: #a5a5a5;
+    float: left;
+  }
+  .param {
+    margin-bottom: 7px;
+    line-height: 1.4;
+}
+.param-inline dt {
+    display: inline-block;
+}
+.param dt {
+    margin: 0;
+    margin-right: 7px;
+    font-weight: 600;
+}
+.param-inline dd {
+    vertical-align: baseline;
+    display: inline-block;
+}
+
+.param dd {
+    margin: 0;
+    vertical-align: baseline;
+} 
+
+.shopping-cart-wrap .price {
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 5px;
+    display: block;
+}
+var {
+    font-style: normal;
+}
+
+.media img {
+    margin-right: 1rem;
+}
+.img-sm {
+    width: 90px;
+    max-height: 75px;
+    object-fit: cover;
+}
