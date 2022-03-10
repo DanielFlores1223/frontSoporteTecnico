@@ -1,16 +1,16 @@
 <div class="card">
-    <h4 class="card-title">Reportes</h4>
-    <div class="container align-self-center">
-        <div class="button-row">
-            <button
-            class="btn btn-outline-primary btn-sm"
-              mat-button
-              mat-raised-button
-              (click)="randomize()"
-            >
-              Randomize
-            </button>
-            <!--button
+  <h4 class="card-title">Reportes</h4>
+  <div class="container align-self-center">
+    <div class="button-row">
+      <button
+        class="btn btn-outline-primary btn-sm"
+        mat-button
+        mat-raised-button
+        (click)="randomize()"
+      >
+        Randomize
+      </button>
+      <!--button
             class="btn btn-outline-primary btn-sm"
               mat-button
               mat-raised-button
@@ -18,50 +18,49 @@
             >
               Push
             </button-->
-            <button
-            class="btn btn-outline-primary btn-sm"
-              mat-button
-              mat-raised-button
-              (click)="changeColor()"
-            >
-              Recolor
-            </button>
-            <button
-            class="btn btn-outline-primary btn-sm"
-              mat-button
-              mat-raised-button
-              (click)="hideOne()"
-            >
-              Toggle Series B
-            </button>
-            
-          </div>
+      <button
+        class="btn btn-outline-primary btn-sm"
+        mat-button
+        mat-raised-button
+        (click)="changeColor()"
+      >
+        Recolor
+      </button>
+      <button
+        class="btn btn-outline-primary btn-sm"
+        mat-button
+        mat-raised-button
+        (click)="hideOne()"
+      >
+        Toggle Series B
+      </button>
     </div>
-  <div class="container">  
+  </div>
+  <div class="container">
     <div class="row align-items-center">
       <div class="col-6">
         <div class="flex-item">
           <table class="table table-responsive table-hover">
             <thead class="thead-light">
-                <tr>
-                    <th *ngFor="let label of lineChartData.labels">{{ label }}</th>
-                  </tr>
-                  <tr
-                    *ngFor="let d of lineChartData.datasets; let i = index"
-                    [class]="'line-' + i"
-                  >
-                    <td *ngFor="let label of lineChartData.labels; let j = index">
-                      {{ d && d.data[j] }}
-                    </td>
-                  </tr>
-              </thead>
+              <tr>
+                <th *ngFor="let label of lineChartData.labels">{{ label }}</th>
+              </tr>
+              <tr
+                *ngFor="let d of lineChartData.datasets; let i = index"
+                [class]="'line-' + i"
+              >
+                <td *ngFor="let label of lineChartData.labels; let j = index">
+                  {{ d && d.data[j] }}
+                </td>
+              </tr>
+            </thead>
           </table>
         </div>
       </div>
       <div class="col-6">
         <div class="flex">
           <div class="flex-item">
-            <div style="display: block; ">
+            <div style="display: block">
               <canvas
                 baseChart
                 width="600"
@@ -78,5 +77,16 @@
       </div>
     </div>
   </div>
+  <div class='tableauPlaceholder' id='viz1646362084957' style='position: relative'><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='views&#47;CO2percpita_16426305355040&#47;Dashboard1?:language=es-ES&amp;:embed=true' /> <param name='toolbar' value='yes' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1646362084957');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1000px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1000px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.minHeight='750px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+  <iframe
+    src="https://public.tableau.com/views/CO2percpita_16426305355040/Dashboard1?:language=es-ES&:display_count=n&:origin=viz_share_link?:showVizHome=no&:embed=true"
+    width="1000px"
+    height="500px"
+    pading="10px"
+  ></iframe>
+
+  <br /><br />
+
 </div>
 <app-navigation></app-navigation>
