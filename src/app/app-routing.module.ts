@@ -11,12 +11,17 @@ import { PerfilUserComponent } from './User/perfil-user/perfil-user.component';
 import { NewTicketComponent } from './User/new-ticket/new-ticket.component';
 import { UsersListComponent } from './Admin/users-list/users-list.component';
 import { ComplaintsMailboxComponent } from './User/complaints-mailbox/complaints-mailbox.component';
+import { TecnicosListComponent } from './Admin/tecnicos-list/tecnicos-list.component';
+import { PerfilTecnicosComponent } from './Admin/perfil-tecnicos/perfil-tecnicos.component';
+import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecnicos.component';
 
 const routes: Routes = [
   /*Admin*/
   {path:'adminHome',component:ComponentsAdminComponent},
   {path:'reports',component:ReportsComponent},
   {path: 'usuarios', component:UsersListComponent},
+  {path: 'perfilTecnico', component:PerfilTecnicosComponent},
+  {path: 'reprtsTecnico', component:ReportsTecnicosComponent},
   /*common*/
   {path:'modal',component:GenericModalComponent},
   {path:'login',component:LoginComponent},
@@ -27,7 +32,7 @@ const routes: Routes = [
   {path:'perfilUser',component:PerfilUserComponent},
   {path:'newTicket',component:NewTicketComponent},
   {path:'buzon',component:ComplaintsMailboxComponent},
-  
+  {path:'tecnicos',component:TecnicosListComponent},
 /*Rutas por defecto*/
   {path:'',redirectTo:'paginaprincipal', pathMatch:'full'},
   {path:'**',redirectTo:'paginaprincipal', pathMatch:'full'}

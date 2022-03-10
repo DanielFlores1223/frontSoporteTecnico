@@ -17,6 +17,9 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import { FormsModule } from '@angular/forms';
 import { ComplaintsMailboxComponent } from './User/complaints-mailbox/complaints-mailbox.component';
 import { UsersListComponent } from './Admin/users-list/users-list.component';
+import { TecnicosListComponent } from './Admin/tecnicos-list/tecnicos-list.component';
+import { PerfilTecnicosComponent } from './Admin/perfil-tecnicos/perfil-tecnicos.component';
+import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecnicos.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { UsersListComponent } from './Admin/users-list/users-list.component';
     PerfilUserComponent,
     NewTicketComponent,
     ComplaintsMailboxComponent,
-    UsersListComponent
+    UsersListComponent,
+    TecnicosListComponent,
+    PerfilTecnicosComponent,
+    ReportsTecnicosComponent
   ],
   imports: [
     BrowserModule,
