@@ -34,8 +34,8 @@ const routes: Routes = [
   {path:'buzon',component:ComplaintsMailboxComponent},
   {path:'tecnicos',component:TecnicosListComponent},
 /*Rutas por defecto*/
-  {path:'',redirectTo:'paginaprincipal', pathMatch:'full'},
-  {path:'**',redirectTo:'paginaprincipal', pathMatch:'full'}
+  {path:'',redirectTo:'login', pathMatch:'full'},
+  {path:'**',redirectTo:'login', pathMatch:'full'}
 ];
 
 @NgModule({

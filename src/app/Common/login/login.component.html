@@ -1,4 +1,4 @@
-<div class="fondo" Style="background-image:url(../../../assets/Img/fondo.jpeg)">
+<div class="fondo" style="background-image:url(../../../assets/Img/fondo.jpeg)">
   <section class="vh-90">
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -19,9 +19,12 @@
                   <span><i class="bx bx-user"></i></span>
                   <input
                     type="text"
+                    name="email"
                     placeholder="Correo Electrónico"
                     required
                     class=""
+                    [(ngModel)]="userLogin.email"
+                    
                   />
                 </div>
               </div>
@@ -29,19 +32,22 @@
                 <div class="input-field">
                   <span><i class="bx bx-lock-alt"></i></span>
                   <input
-                    type="text"
+                    type="password"
+                    name="password"
                     placeholder="Contraseña"
                     required
                     class=""
+                    [(ngModel)]="userLogin.password"
                   />
                 </div>
               </div>
               <div class="d-flex align-items-start"></div>
+            
             </form>
             <button class="btn btn-secondary btn-lg btn-block1" type="submit">
               Registrarme
             </button>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="login()">
               <span>Iniciar Sesión</span>
             </button>
           </div>

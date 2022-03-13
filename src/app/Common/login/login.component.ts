@@ -1,4 +1,7 @@
+import { UserLogin } from './../../Entities/user.interfaces';
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../Services/user.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  userLogin: UserLogin = { email: '', password: ''}
+  respuesta = {
+    message: '',
+    result: {},
+    success: false
+  }
+  constructor( private userService: UserService, private route : Router ) { }
 
   ngOnInit(): void {
+  }
+
+  public login() {
+    this.userService.login( this.userLogin.email, this.userLogin.password ).subscribe( (res:any) => {
+      
+      if( res.success ) {
+        //inicio sesion correctamente
+        this.userService.getLoginInfo.emit(res);
+
+        if( res.result.role === 'employee' ) {
+            this.route.navigate(['/userHome']);
+        
+        } else if( res.result.role === 'admin' ) {
+           this.route.navigate(['/adminHome'])
+        
+        }
+
+      }else{
+        // no se hizo correctamente
+      }
+
+    },
+    err => {
+      console.log(err)
+    } )    
   }
 
 }

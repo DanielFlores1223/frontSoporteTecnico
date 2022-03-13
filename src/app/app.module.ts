@@ -20,6 +20,8 @@ import { UsersListComponent } from './Admin/users-list/users-list.component';
 import { TecnicosListComponent } from './Admin/tecnicos-list/tecnicos-list.component';
 import { PerfilTecnicosComponent } from './Admin/perfil-tecnicos/perfil-tecnicos.component';
 import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecnicos.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecni
     ReportsTecnicosComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -18,3 +18,8 @@ export interface UserIdentity {
   role: RoleEnum
   area?: string
 }
+
+export interface UserLogin {
+  email: string
+  password: string
+}
