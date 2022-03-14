@@ -70,13 +70,18 @@ export class NewTicketComponent implements OnInit {
             //se registro correctamente
             console.log(res)
             Swal.fire(
-              'Good job!',
-              'You clicked the button!',
+              '¡Registro Exitoso!',
+              'El técnico aceptará tu servicio',
               'success'
             )
         
         }else {
            //no se registro correcte
+           Swal.fire(
+            'No se creó el ticket...',
+            'Algo salió mal, intentalo de nuevo más tarde',
+            'error'
+          )
         }
     }, 
     err => {
