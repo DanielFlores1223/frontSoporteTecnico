@@ -35,6 +35,7 @@ export class AppComponent {
       localStorage.setItem('login', this.dataLogin.success );
       localStorage.setItem('id', this.dataLogin.result.id);
       localStorage.setItem('typeUser', this.dataLogin.result.role);
+      localStorage.setItem('area', this.dataLogin.result.area);
 
       this.loginStatus = this.userService.loginExito();
       this.typeUser = String(localStorage.getItem('typeUser'));

@@ -8,10 +8,7 @@
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
                     <img class="img-account-profile rounded-circle mb-2" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                    <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG o PNRG de no más de 5 MB</div>
-                    <!-- Profile picture upload button-->
-                    <button class="btn boton-cargar" type="button">Subir nueva imagen</button>
+                    <br>
                 </div>
             </div>
             <br>
@@ -21,13 +18,13 @@
                     <div class="row gx-3 mb-3">
                         <!-- Form Group -->
                         <div class="col-md-6">
-                            <label class="small mb-1" for="inputPhone">Modelo</label>
-                            <input class="form-control" id="inputPhone" type="text" value="T14">
+                            <label class="small mb-1" for="modelo">Modelo</label>
+                            <input class="form-control" id="modelo" name="modelo" type="text" value="T14">
                         </div>
                         <!-- Form Group -->
                         <div class="col-md-6">
-                            <label class="small mb-1" for="inputBirthday">Folio</label>
-                            <input class="form-control" id="inputBirthday" type="text" value="R12621">
+                            <label class="small mb-1" for="folio">Folio</label>
+                            <input class="form-control" id="folio" name="folio" type="text" value="R12621">
                         </div>
                     </div>
                 </div>
@@ -38,35 +35,19 @@
             <div class="card mb-4">
                 <div class="card-header">Detalles de la cuenta</div>
                 <div class="card-body">
-                    <form>
-                       
-                        <!-- Form Group (Usuario)-->
-                        
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Nombre de usuario</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Escribe tu usuario"
-                                value="">
-                        </div>
-                        
+                    <form> 
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (Nombre(s))-->
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">Nombre(s)</label>
-                                <input class="form-control" id="inputFirstName" type="text"
+                                <input class="form-control" id="inputFirstName" name="inputFirstName" type="text"
                                     placeholder="Escriba sus nombre(s)" value="">
                             </div>
                             <!-- Form Group (Apellidos)-->
-                            <div class="col-md-4">
-                                <label class="small mb-1" for="inputLastName">Apellido Paterno</label>
-                                <input class="form-control" id="inputLastName" type="text"
-                                    placeholder="Paterno" value="">
-                            </div>
-                            <!-- Form Group (Apellidos)-->
-                            <div class="col-md-4">
-                                <label class="small mb-1" for="inputLastName">Apellido Materno</label>
-                                <input class="form-control" id="inputLastName" type="text"
-                                    placeholder="Materno" value="">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Apellidos</label>
+                                <input class="form-control" id="inputLastName" name="inputLastName" type="text" value="">
                             </div>
                         </div>
                         <!-- Form Row        -->
@@ -74,36 +55,44 @@
                             <!-- Form Group (Dependencia)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputOrgName">Dependencia</label>
-                                <input class="form-control" id="inputOrgName" type="text"
-                                    placeholder="Enter your organization name" value="Esprezza">
+                                <input class="form-control" id="inputOrgName" name="dependencia" type="text"
+                                    placeholder="Esprezza" value="Esprezza">
                             </div>
                             <!-- Form Group (Área)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Área</label>
-                                <input class="form-control" id="inputLocation" type="text"
-                                    placeholder="Enter your location" value="Almacen">
-                            </div>
+                            <div class="col-md-3">
+                                <label class="small mb-1" for="inputFirstName">Área</label>  
+                                <select class="form-control form-select dia ml-3" id="servicio" name="servicio" aria-label=".form-select-lg example">
+                                  <option selected>Seleccióna área</option>
+                                  <option value="Dirección">Dirección</option>
+                                  <option value="Administración">Administración</option>
+                                  <option value="Recursos Humanos">Recursos Humanos</option>
+                                  <option value="Reclutamiento">Reclutamiento</option>
+                                  <option value="Finanzas">Finanzas</option>
+                                  <option value="Logística">Logística</option>
+                                  <option value="Marketing">Marketing</option>
+                                </select>
+                              </div>
                         </div>
                         <!-- Form Group (correo)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Correo electrónico</label>
-                            <input class="form-control" id="inputEmailAddress" type="email"
+                            <input class="form-control" id="inputEmailAddress" name="inputEmailAddress" type="email"
                                 placeholder="Enter your email address" value="">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
+                             <!-- Form Group (Cumpleaños)-->
+                             <div class="col-md-6">
+                                <label class="small mb-1" for="phone">Teléfono</label>
+                                <input class="form-control" id="phone" type="text" name="phone"
+                                     value="3344554567">
+                            </div>
                             <!-- Form Group (Extención)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Extención</label>
-                                <input class="form-control" id="inputPhone" type="tel"
-                                    placeholder="Enter your phone number" value="11819">
+                                <label class="small mb-1" for="extencion">Extención</label>
+                                <input class="form-control" id="extencion" name="extencion" type="tel" value="11819">
                             </div>
-                            <!-- Form Group (Cumpleaños)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Cumpleaños</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                    placeholder="Enter your birthday" value="04/06/2001">
-                            </div>
+                           
                         </div>
                         
                         <!-- Save changes button-->

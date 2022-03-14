@@ -11,11 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin = { email: '', password: ''}
-  respuesta = {
-    message: '',
-    result: {},
-    success: false
-  }
+
   constructor( private userService: UserService, private route : Router ) { }
 
   ngOnInit(): void {
@@ -23,17 +19,19 @@ export class LoginComponent implements OnInit {
 
   public login() {
     this.userService.login( this.userLogin.email, this.userLogin.password ).subscribe( (res:any) => {
-      
-      if( res.success ) {
-        //inicio sesion correctamente
-        this.userService.getLoginInfo.emit(res);
 
-        if( res.result.role === 'employee' ) {
+      localStorage.setItem('token', res.headers.get('Authorization'));
+      
+      if( res.body.success ) {
+        //inicio sesion correctamente
+        this.userService.getLoginInfo.emit(res.body);
+
+        if( res.body.result.role === 'employee' ) {
             this.route.navigate(['/userHome']);
         
-        } else if( res.result.role === 'admin' ) {
+        } else if( res.body.result.role === 'admin' ) {
            this.route.navigate(['/adminHome'])
-        
+
         }
 
       }else{

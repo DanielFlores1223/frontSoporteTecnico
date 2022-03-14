@@ -12,53 +12,41 @@
             >
             <input
               class="form-control"
-              id="inputUsername"
+              id="tituloProblema"
+              name="tituloProblema"
               type="text"
               placeholder="Titulo del incidente"
-              value=""
+              value="Titulo"
+              [(ngModel)]="createInterface.tittle"
             />
           </div>
 
           <!-- Usuario-->
           <div class="row gx-3 mb-3">
-            <div class="col-md-4">
-              <label class="small mb-1" for="inputFirstName">Nombre del solicitante</label>
+            <div class="col-md-6">
+              <label class="small mb-1" id="nombre" for="nombre">Nombre del solicitante</label>
               
               <input
                 class="form-control"
                 id="inputFirstName"
                 type="text"
-                placeholder="Tania"
-                value=""
+                value="{{interfaceIdentity.forename}}"
                 readonly
               />
             </div>
            
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label class="small mb-1" for="inputLastName"
-                >Apellido Paterno</label
+                >Apellidos</label
               >
               <input
                 class="form-control"
                 id="inputLastName"
+                name="inputLastName"
                 type="text"
-                placeholder="Jiménez"
-                value=""
+                value="{{ interfaceIdentity.surname }}"
                 readonly
-              />
-            </div>
-            
-            <div class="col-md-4">
-              <label class="small mb-1" for="inputLastName"
-                >Apellido Materno</label
-              >
-              <input
-                class="form-control"
-                id="inputLastName"
-                type="text"
-                placeholder="Márquez"
-                value=""
-                readonly
+                
               />
             </div>
           </div>
@@ -77,16 +65,16 @@
               <!-- Servicio-->
               <div class="col-md-3">
                 <label class="small mb-1" for="inputFirstName">Servicio</label>  
-                <select class="form-control form-select dia ml-3" aria-label=".form-select-lg example">
+                <select class="form-control form-select dia ml-3" id="servicio" name="servicio" aria-label=".form-select-lg example" [(ngModel)]="createInterface.type">
                   <option selected>Tipo de ticket</option>
-                  <option value="1">Internet</option>
-                  <option value="2">Software (Programas)</option>
-                  <option value="3">Hardware (Equipo)</option>
+                  <option value="Internet">Internet</option>
+                  <option value="Software">Software (Programas)</option>
+                  <option value="Hardware">Hardware (Equipo)</option>
                 </select>
               </div>
               <!-- Fecha-->
               <div class="col-md-3">
-                <label class="small mb-1" for="inputLastName"
+                <label class="small mb-1" for="fecha"
                   >Fecha de solicitud (DD/MM/AAAA)</label>
                   <input
                       class="form-control dia"
@@ -96,6 +84,7 @@
                       value="2018-07-22"
                       min="2018-01-01"
                       max="2022-12-31"
+                      [(ngModel)]="createInterface.dateRequest"
                   />
               </div>
               <div class="col-md-3">
@@ -103,38 +92,27 @@
                   <input
                       class="form-control dia"
                       type="time"
-                      
+                      name="Time"
+                      id="time"
+                      [(ngModel)]="createInterface.hour"
                   />
-              </div>
-              <div class="col-md-3">
-                <label class="small mb-1" for="inputLastName"
-                  >Técnico disponible</label
-                >
-                <input
-                  class="form-control"
-                  id=""
-                  type="text"
-                  placeholder="Arnulfo Ortega"
-                  value=""
-                  readonly
-                />
               </div>
             </div>
             <div class="mb-3">
-              <label class="small mb-1" for="inputEmailAddress"
+              <label class="small mb-1" for="dispositivo"
                 >Identificación del equipo</label
               >
-              <select class="form-control form-select dia ml-3" aria-label=".form-select-lg example">
+              <select class="form-control form-select dia ml-3" id="dispositivo" name="dispositivo" aria-label=".form-select-lg example" [(ngModel)]="createInterface.device">
                 <option selected>Elige el dispositivo</option>
-                <option value="1">Pc Escritorio</option>
-                <option value="2">Pc Portátil</option>
-                <option value="3">Monitor</option>
-                <option value="4">Impresora</option>
-                <option value="5">Teclado</option>
-                <option value="6">Mouse</option>
-                <option value="7">Escaner</option>
-                <option value="8">Teléfono</option>
-                <option value="9">Otro</option>
+                <option value="Escritorio">Pc Escritorio</option>
+                <option value="PC Portatil">Pc Portátil</option>
+                <option value="Monitor">Monitor</option>
+                <option value="Impresora">Impresora</option>
+                <option value="Teclado">Teclado</option>
+                <option value="Mouse">Mouse</option>
+                <option value="Escaner">Escaner</option>
+                <option value="Teléfono">Teléfono</option>
+                <option value="Otro">Otro</option>
               </select>
             </div>
             <div class="row gx-3 mb-3">
@@ -143,10 +121,12 @@
                 <label class="small mb-1" for="inputOrgName">Área que solicita</label>
                 <input
                   class="form-control"
-                  id=""
+                  id="area"
+                  name="area"
                   type="text"
                   placeholder="Enter your organization name"
-                  value="Finanzas"
+                  value="{{ interfaceArea.name }}"
+                  readonly
                 />
               </div>
               
@@ -154,9 +134,11 @@
                 <label class="small mb-1" for="inputLocation">Teléfono</label>
                 <input
                   class="form-control"
-                  id=""
+                  id="telefono"
+                  name="telefono"
                   type="number"
-                  placeholder="555-659-54-78"
+                  value="{{ interfaceArea.numberPhone }}"
+                  readonly
                 />
               </div>
                 <!-- Form Group (Extención)-->
@@ -164,46 +146,46 @@
                   <label class="small mb-1" for="inputPhone">Extención</label>
                   <input
                     class="form-control"
-                    id="inputPhone"
+                    id="extencion"
+                    name="extencion"
                     type="tel"
                     placeholder="Enter your phone number"
-                    value="11819"
+                    value="{{ interfaceArea.extensio }}"
+                    readonly
                   />
                 </div>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-4">
-                <label class="small mb-1" for="inputBirthday">Observaciónes</label>
+                <label class="small mb-1" for="observaciones">Observaciónes</label>
                 <input
                   class="form-control"
-                  id="inputBirthday"
+                  id="observaciones"
                   type="text"
-                  name=""
+                  name="observaciones"
                   placeholder="Datos extra"
                   value=""
+                  [(ngModel)]="createInterface.observation"
                 /> 
-              </div>
-              <div class="col-md-4">
-                <label for="formFile" class="small mb-1">¿Tienes imágen?</label>
-                <input class="form-control dia" type="file" id="formFile">
               </div>
               <div class="col-md-4">
                 <label for="formFile" class="small mb-1">¿El procedimiento requiere copia de seguridad?</label>
               <div class="form-check form-check-inline mt-3">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  value="Si" [(ngModel)]="createInterface.backup">
                 <label class="form-check-label" for="inlineRadio1">Si</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" [(ngModel)]="createInterface.backup">
                 <label class="form-check-label" for="inlineRadio2">No</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="No lo sé" [(ngModel)]="createInterface.backup">
                 <label class="form-check-label" for="inlineRadio2">No lo sé</label>
               </div>
               </div>
             </div>
-            <button class="btn boton-cargar" type="button">
+            <!-- BUTTON CREATE TICKET  -->
+            <button class="btn boton-cargar" type="button" (click)="createTicket()">
               Enviar solicitud
             </button>
           </form>

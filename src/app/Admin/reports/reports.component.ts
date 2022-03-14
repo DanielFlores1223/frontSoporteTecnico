@@ -111,16 +111,10 @@ public hideOne(): void {
   this.chart?.hideDataset(1, !isHidden);
 }
 
-/*public pushOne(): void {
-  this.lineChartData.datasets.forEach((x, i) => {
-    const num = ReportsComponent.generateNumber(i);
-    x.data.push(num);
-  });
-  this.lineChartData?.labels?.push(`Label ${ this.lineChartData.labels.length }`);
-
-  this.chart?.update();
+public pdfDowload(): void {
+  console.log('Desgarga')
 }
-*/
+
 public changeColor(): void {
   this.lineChartData.datasets[2].borderColor = 'green';
   this.lineChartData.datasets[2].backgroundColor = `rgba(0, 255, 0, 0.3)`;

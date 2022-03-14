@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { UserIdentity } from '../Entities/user.interfaces';
 import { environment } from 'src/environments/environment';
 
@@ -16,13 +16,19 @@ export class UserService {
   @Output() getLoginInfo: EventEmitter<any>= new EventEmitter();
   @Output() changeLogin: EventEmitter<Boolean> = new EventEmitter();
 
-  public getUser(id: string) {
-    return this.http.get<UserIdentity>(`${environment.api}/api/user/${id}`);
+  public getUser(id: string, token: string) {
+
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    })
+    
+    return this.http.get<UserIdentity>(`${environment.api}/api/user/${id}`, { headers });
 
   }
 
-  public login( email: string, password: string ) {
-    return this.http.post( `${environment.api}${this.path}/login`, { email, password } );
+  public login( email: string, password: string) {
+
+    return this.http.post( `${environment.api}${this.path}/login`, { email, password }, { observe: 'response'} );
 
   }
 

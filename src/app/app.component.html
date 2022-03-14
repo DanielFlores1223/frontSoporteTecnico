@@ -1,9 +1,16 @@
+<nav class="navbar navbar-light bg-light nav">
+  <div class="container-fluid "> 
+
+  </div>
+</nav>
+
 <div *ngIf="loginStatus; else noLogin">
     <div [ngSwitch]="typeUser">
       <div *ngSwitchCase="'employee'">
           <router-outlet></router-outlet>
       </div>
       <div *ngSwitchCase="'admin'">
+        <app-navigation></app-navigation>
         <router-outlet></router-outlet>
     </div>
     </div>

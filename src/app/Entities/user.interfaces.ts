@@ -15,7 +15,7 @@ export interface UserIdentity {
   forename: string
   surname: string
   email: string
-  role: RoleEnum
+  role: string
   area?: string
 }
 
