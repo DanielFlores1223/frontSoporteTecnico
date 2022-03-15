@@ -1,151 +1,89 @@
+
 <div class="card">
-  <div class="input-group filters">
+  <div class="input-group">
     <h4 class="card-title">Mis Tickets</h4>
-    <!--Buscador-->
-    <div class="form-outline">
-      <input type="search" id="search" name="search" class="form-control" />
+    <div class="input-group buscar">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" placeholder="Buscar" />
+      </div>
+      <button type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
-    <button type="button" class="btn btn-primary">
-      <i class="bx bx-search-alt"></i>
-    </button>
-
-    <!--Fin-->
-
-    <!--filtro de fechas-->
-    <div class="md-form md-outline input-with-post-icon datepicker">
-      <label for="start">Start date:</label>
-      <input
-        class="form-label"
-        type="date"
-        id="start"
-        name="trip-start"
-        value="2018-07-22"
-        min="2018-01-01"
-        max="2022-12-31"
-      />
-      <label for="start"> To </label>
-      <input
-        class="form-label"
-        type="date"
-        id="finish"
-        name="trip-finish"
-        value="2018-07-22"
-        min="2018-01-01"
-        max="2022-12-31"
-      />
-    </div>
-    <!--Fin-->
+   
   </div>
-  <div class="card-body">
-    <div class="wraper">
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-primary"
-            >En proceso</span
-          >
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
+      <div class="input-group filters">
+          <!--filtro de fechas-->
+          <div class="md-form md-outline input-with-post-icon datepicker">
+              <label for="start">Start date:</label>
+              <input class="form-label" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31" />
+              <label for="start"> To </label>
+              <input class="form-label" type="date" id="finish" name="trip-finish" value="2018-07-22" min="2018-01-01" max="2022-12-31" />
+          </div>
+          <!--Fin-->
       </div>
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-success"
-            >Terminado</span
-          >
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
+    <div class="row">
+      <div *ngFor="let ticket of myTickets" class="col-md-4 card-body">
+            <div class="card intern">
+                <div class="card-header" [ngSwitch]="ticket?.status">
+                 <h4>{{ ticket?.status === 'En espera' ? 'Esperando Técnico' : 'Servicio Aceptado' }}</h4>
+                    <span *ngSwitchCase="'En espera'" class="badge rounded-pill bg-info">
+                        {{ ticket?.status }}
+                    </span>
+                    <span *ngSwitchCase="'En proceso'" class="badge rounded-pill bg-primary">
+                      {{ ticket?.status }}
+                    </span>
+                    <span *ngSwitchCase="'Completado'" class="badge rounded-pill bg-success">
+                    {{ ticket?.status }}
+                    </span>
+                    <span *ngSwitchCase="'Cancelado'" class="badge rounded-pill bg-danger">
+                    {{ ticket?.status }}
+                    </span>     
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">
+                      <!--Nombre del técnico-->
+                      {{ ticket?.tittle }} 
+                    </h3>
+                    <p class="card-text">
+                      Observaciones: {{ticket?.observation}}
+                    </p>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalTicket" (click)="getAllInfo(ticket?._id)">
+                      <span>Ver Detalles</span>
+                    </button>
+                </div>
+          </div>
+      </div>  
+    </div>               
+</div>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="modalTicket" tabindex="-1" aria-labelledby="modalTicketLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTicketLvabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-danger"
-            >Cancelado</span
-          >
+      <div class="modal-body">
+        <div *ngIf="existeAsignacion; else noAsignacion">
+            <p>Si está asignado a un tecnico</p>
+            <p>Nombre tecnico: {{ tecnicoInfo?.surname }}</p>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
+        <ng-template #noAsignacion>
+            <p>No hay ningun tecnico asignado</p>
+        </ng-template>
       </div>
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-primary"
-            >En proceso</span
-          >
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
-      </div>
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-success"
-            >Terminado</span
-          >
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
-      </div>
-      <div class="card intern">
-        <div class="card-header">
-          Número de Ticket<span class="badge rounded-pill bg-danger"
-            >Cancelado</span
-          >
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Nombre del técnico</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <a href="#">Ver Detalles</a>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 </div>
 <app-navigation></app-navigation>
+
+
+
+

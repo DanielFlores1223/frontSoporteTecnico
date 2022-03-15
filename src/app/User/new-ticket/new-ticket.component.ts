@@ -64,7 +64,7 @@ export class NewTicketComponent implements OnInit {
 
   createTicket () {
     
-    this.ticketS.registerTicker(this.createInterface).subscribe( (res:any) => {
+    this.ticketS.registerTicker(this.createInterface, this.token).subscribe( (res:any) => {
         
         if(res.success){
             //se registro correctamente
@@ -100,7 +100,7 @@ export class NewTicketComponent implements OnInit {
   }
 
   getAreaInfo() {
-      this.areaS.getArea(this.idArea).subscribe( async(res:any) => {
+      this.areaS.getArea(this.idArea, this.token).subscribe( async(res:any) => {
           if( res.success ) this.interfaceArea = await res.result;
           else console.log('error!');
       },

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { CreateTicketInput } from '../Entities/ticket.interfaces';
+import { Ticket, CreateTicketInput } from '../Entities/ticket.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,22 @@ export class TicketService {
 
   constructor( private http: HttpClient ) { }
 
-  public registerTicker( data : CreateTicketInput ) {
-    return this.http.post(`${environment.api}${this.path}`, data);
+  public getTicketFilter(filter: string, value: (string | undefined), token: string ) {
+    
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+
+    return this.http.get<Ticket[]>(`${environment.api}${this.path}${filter}/${value}`, {headers});
+  }
+
+  public registerTicker( data : CreateTicketInput, token: string ) {
+    
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    })
+
+    return this.http.post(`${environment.api}${this.path}`, data, { headers });
   
   }
 

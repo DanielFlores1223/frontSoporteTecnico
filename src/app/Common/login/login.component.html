@@ -37,17 +37,21 @@
                     placeholder="Contraseña"
                     required
                     class=""
+                    [type]="hide ? 'password' : 'text'"
                     [(ngModel)]="userLogin.password"
                   />
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
                 </div>
               </div>
               <div class="d-flex align-items-start"></div>
             
             </form>
-            <button class="btn btn-secondary btn-lg btn-block1" type="submit">
+            <button routerLink="/registro" class="btn btn-secondary btn-lg btn-block1" type="submit">
               Registrarme
             </button>
-            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="login()">
+            <button routerLink="/adminHome" class="btn btn-primary btn-lg btn-block" type="submit" (click)="login()">
               <span>Iniciar Sesión</span>
             </button>
           </div>

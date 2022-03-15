@@ -21,6 +21,15 @@ import { TecnicosListComponent } from './Admin/tecnicos-list/tecnicos-list.compo
 import { PerfilTecnicosComponent } from './Admin/perfil-tecnicos/perfil-tecnicos.component';
 import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecnicos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 
 @NgModule({
@@ -50,6 +59,14 @@ import { HttpClientModule } from '@angular/common/http';
     DlDateTimePickerModule,
     FormsModule,
     NgChartsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [FormsModule],
   bootstrap: [AppComponent]

@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  hide = true;
+
   userLogin: UserLogin = { email: '', password: ''}
 
   constructor( private userService: UserService, private route : Router ) { }
@@ -53,7 +55,11 @@ export class LoginComponent implements OnInit {
 
     },
     err => {
-      console.log(err)
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal',
+        text: 'Debes estar registrado para acceder'
+      })
     } )    
   }
 
