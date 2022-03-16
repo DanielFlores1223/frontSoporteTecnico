@@ -2,28 +2,29 @@
 <div class="card">
   <div class="input-group">
     <h4 class="card-title">Mis Tickets</h4>
-    <div class="input-group buscar">
-      <div class="form-outline">
-        <input type="search" id="form1" class="form-control" placeholder="Buscar" />
-      </div>
-      <button type="button" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
+    
    
   </div>
       <div class="input-group filters">
           <!--filtro de fechas-->
           <div class="md-form md-outline input-with-post-icon datepicker">
               <label for="start">Start date:</label>
-              <input class="form-label" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31" />
+              <input class="form-label" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31" [(ngModel)]="dateFilter.startDate" (change)="getTicketsByDates()" />
               <label for="start"> To </label>
-              <input class="form-label" type="date" id="finish" name="trip-finish" value="2018-07-22" min="2018-01-01" max="2022-12-31" />
+              <input class="form-label" type="date" id="finish" name="trip-finish" value="2018-07-22" min="2018-01-01" max="2022-12-31" [(ngModel)]="dateFilter.endDate" (change)="getTicketsByDates()" />
+          </div>
+          <div class="input-group buscador">
+            <div class="form-outline">
+              <input type="search" id="form1" class="form-control" placeholder="Buscar" />
+            </div>
+            <button type="button" class="btn1 btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
           </div>
           <!--Fin-->
       </div>
     <div class="row">
-      <div *ngFor="let ticket of myTickets" class="col-md-4 card-body">
+      <div *ngFor="let ticket of myTickets" class="col-sm-4 p-1 b-5">
             <div class="card intern">
                 <div class="card-header" [ngSwitch]="ticket?.status">
                  <h4>{{ ticket?.status === 'En espera' ? 'Esperando Técnico' : 'Servicio Aceptado' }}</h4>

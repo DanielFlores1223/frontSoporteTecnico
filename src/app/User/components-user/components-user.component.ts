@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../../Services/ticket.service';
 import { UserService } from '../../Services/user.service';
 import { UserIdentity } from '../../Entities/user.interfaces';
-import { Ticket } from '../../Entities/ticket.interfaces';
+import { Ticket, DateFilterInput } from '../../Entities/ticket.interfaces';
 
 @Component({
   selector: 'app-components-user',
@@ -39,6 +39,11 @@ export class ComponentsUserComponent implements OnInit {
     area: ''
   }
 
+  dateFilter: DateFilterInput = {
+    endDate: '',
+    startDate: ''
+  }
+
   constructor( private ticketS : TicketService, 
                private userS: UserService 
              ) { }
@@ -49,7 +54,7 @@ export class ComponentsUserComponent implements OnInit {
 
   getMyTickets() {
     this.ticketS.getTicketFilter( 'assignedBy', this.myId, this.token ).subscribe( 
-      (res: any) => {
+      ( res: any ) => {
          
         if (res.success) {
           this.myTickets = res.result;
@@ -91,6 +96,36 @@ export class ComponentsUserComponent implements OnInit {
         //mensaje de error
       } );
 
+  }
+
+
+  getTicketsByDates() {
+    const { startDate, endDate } = this.dateFilter;
+      
+      if ( [startDate, endDate].includes('') ) {
+          //si está vacio aqui debe mostrar un error
+          //Este mensaje deberia mostrarse en el DOM
+          console.log('Los campos de la fecha son obligatorios');
+
+          return;
+      }
+
+      this.ticketS.getTicketsByDate( this.dateFilter, this.token ).subscribe(
+        (res: any) => {
+            
+            if( res.success ) {
+              this.myTickets = res.result;
+            
+            } else {
+              //Hubo algun error en la petición
+            }
+
+        },
+        err => {
+            //Algo salio mal...
+            console.log(err);
+        }
+      )
   }
 
 

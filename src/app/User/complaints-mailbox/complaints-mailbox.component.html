@@ -1,3 +1,9 @@
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+/>
+
+
 <div class="card">
     <h4 class="card-title">Buzón de quejas</h4>
   
@@ -9,7 +15,7 @@
             <form>
               <div class="row gx-3 mb-3"> 
                 <!-- Fecha-->
-                <div class="col-md-3">
+                <div class="col-md-6">
                   <label class="small mb-1" for="inputLastName"
                     >Fecha del incidente (DD/MM/AAAA)</label>
                     <input
@@ -22,17 +28,7 @@
                         max="2022-12-31"
                     />
                 </div>
-                <div class="col-md-3">
-                  <label class="small mb-1" for="inputLastName">Hora</label>
-                    <input
-                        class="form-control dia"
-                        type="time"
-                        name="hour"
-                        id="hour"
-                        value="Hour"
-                    />
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                   <label class="small mb-1" for="inputLastName"
                     >Nombre del Técnico </label
                   >
@@ -46,20 +42,11 @@
                     readonly
                   />
                 </div>
-                <div class="col-md-3">
-                    <label class="small mb-1" for="inputLastName"
-                      >Folio del ticket</label
-                    >
-                    <input
-                      class="form-control"
-                      id=""
-                      name="folio"
-                      type="text"
-                      placeholder="157849"
-                      value="Folio"
-                      readonly
-                    />
-                  </div>
+                <div class="col-md-2 d-flex align-items-end">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTecnico">
+                    Buscar técnico
+                  </button>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del problema</label>
@@ -77,6 +64,75 @@
   </div>
   <app-navigation></app-navigation>
   
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal buscar técnico-->
+<div class="modal fade" id="modalTecnico" tabindex="-1" aria-labelledby="modalTecnicoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTecnicoLabel">Buscar técnico</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row mb-3 ">
+          <div class="col-12 input-group buscar d-flex justify-content-end">
+            <div class="form-outline">
+              <input type="search" id="search" name="search" class="form-control" placeholder="Buscar" />
+            </div>
+            <button type="button" class="btn btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+              <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+              <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      
+      </div>
+    </div>
+  </div>
+</div>
   
   
   

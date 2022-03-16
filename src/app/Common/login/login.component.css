@@ -43,9 +43,17 @@ body {
     color: #686868;
     margin-bottom: 10px;
 }
+.view{
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+}
+mat-icon{
+    margin-bottom: 18px!important;
+}
 .input-field span i{
     width: 20px;
-    height: 20px;
+    height: 2px;
     font-size: 20px;
 }
 
@@ -217,11 +225,11 @@ a:hover {
     margin-left: 3%;
 }
 footer{
+    position: absolute;
     margin-top: -5%;
     margin-bottom: 3%!important;
     width: 100%;
-    position:absolute;
     padding-top: -20%;
-  overflow: visible;
-  top:100%;
+    overflow: visible;
+    top:100%;
 }

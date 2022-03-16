@@ -27,3 +27,8 @@ export interface Ticket {
      assignedTo: string
      evaluation: string 
 }
+
+export interface DateFilterInput {
+     startDate: string;
+     endDate: string
+}

@@ -30,17 +30,16 @@
               </div>
               <div class="form-group py-1 pb-2">
                 <div class="input-field">
-                  <span><i class="bx bx-lock-alt"></i></span>
+                  <span><i class="bx bx-lock-alt btn-sm"></i></span>
                   <input
                     type="password"
                     name="password"
                     placeholder="Contraseña"
                     required
-                    class=""
                     [type]="hide ? 'password' : 'text'"
                     [(ngModel)]="userLogin.password"
                   />
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <button class="view" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                 </div>

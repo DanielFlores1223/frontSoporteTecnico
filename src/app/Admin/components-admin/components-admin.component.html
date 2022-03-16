@@ -7,7 +7,9 @@
   <mat-label>Buscar</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
 </mat-form-field>
-
+<div class="row">
+  <button type="button" class="btn btn-primary btn-sm" routerLink="/reports"> Filtrar</button>
+</div>
 <div class="mat-elevation-z8">
   <!-- Inicio de la tabla-->
 <table mat-table [dataSource]="dataSource" matSort>

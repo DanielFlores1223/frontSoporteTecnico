@@ -1,14 +1,21 @@
-.form-outline {
-  float: left;
-  margin-left: 60% !important;
+.btn1{
+  float: right;
+  padding: 15px;
+  margin-top: 10.5%;
+  height: 46%;
 }
-.form-outline {
-  border: solid 1px rgba(189, 189, 189, 0.658) !important;
-  float: left;
-  width: 250px;
+.btn1 i{
+  color: black!important;
 }
-.form-control {
-  width: 230px;
+.buscador{
+  float: left!important;
+  margin-left: 75%!important;
+  margin-top: -5%;
+}
+.form-control{
+  border: solid 1px #a5a5a5!important;
+  height: 46%;
+  margin-top:15% ;
 }
 label {
   margin-right: 10px;
@@ -40,6 +47,7 @@ h5 {
 span {
   float: right;
 }
+
 a {
   margin-top: 20px;
   margin-bottom: 12px;
