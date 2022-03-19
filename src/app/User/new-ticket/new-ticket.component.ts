@@ -48,7 +48,8 @@ export class NewTicketComponent implements OnInit {
      email: '',
      role: '',
      surname: '',
-     area: ''
+     area: '',
+     id: ''
   }
 
 

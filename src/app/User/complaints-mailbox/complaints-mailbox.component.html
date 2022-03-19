@@ -2,8 +2,6 @@
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
 />
-
-
 <div class="card">
     <h4 class="card-title">Buzón de quejas</h4>
   
@@ -23,9 +21,9 @@
                         type="date"
                         id="start"
                         name="trip-start"
-                        value="2018-07-22"
                         min="2018-01-01"
                         max="2022-12-31"
+                        [(ngModel)]="createComplaint.dateIncidence"
                     />
                 </div>
                 <div class="col-md-4">
@@ -37,24 +35,31 @@
                     id=""
                     name="name"
                     type="text"
-                    placeholder="Arnulfo Ortega"
-                    value="Name"
+                    placeholder="Selecciona a un técnico"
+                    value="{{ technicanSelected }}"
                     readonly
                   />
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTecnico">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTecnico" (click)="getTechnicians()">
                     Buscar técnico
                   </button>
                 </div>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del problema</label>
-                <textarea class="form-control" id="descripcion" aria-valuemax="Descripcion" name="descripcion" rows="4" placeholder="Describe el motivo del reporte"></textarea>
+                <textarea class="form-control" 
+                          id="descripcion" 
+                          aria-valuemax="Descripcion" 
+                          name="descripcion" 
+                          rows="4" 
+                          placeholder="Describe el motivo del reporte"
+                          [(ngModel)]="createComplaint.message">
+                 </textarea>
               </div>
               
               
-              <button class="btn boton-cargar" type="button">
+              <button class="btn boton-cargar" type="button" (click)="registerComplaint()">
                 Enviar reporte
               </button>
             </form>
@@ -81,7 +86,13 @@
         <div class="row mb-3 ">
           <div class="col-12 input-group buscar d-flex justify-content-end">
             <div class="form-outline">
-              <input type="search" id="search" name="search" class="form-control" placeholder="Buscar" />
+              <input type="search" 
+                     id="search" 
+                     name="search" 
+                     class="form-control" 
+                     placeholder="Buscar" 
+                     [(ngModel)]="search"
+                     (keyup)="getUserSearch()" />
             </div>
             <button type="button" class="btn btn-primary">
               <i class="fas fa-search"></i>
@@ -90,45 +101,22 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 col-md-4">
-              <div class="card" style="width: 15rem;">
+            <div *ngFor="let t of technicians | paginate: { itemsPerPage: 3, currentPage: p }" class="col-sm-12 col-md-4">
+              <div class="card cardTecnico" style="width: 15rem;" (click)="selectTechnician(t)" data-bs-dismiss="modal">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-              <div class="card" style="width: 15rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-              <div class="card" style="width: 15rem;">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <h5 class="card-title">Técnico</h5>
+                  <p class="card-text">Nombre: {{ t?.forename }}</p>
+                  <p class="card-text">Apellidos: {{ t?.surname }}</p>
                 </div>
               </div>
             </div>
         </div>
       </div>
       <div class="modal-footer">
-      
+        <pagination-controls (pageChange)="p = $event"
+                              previousLabel="Anterior"
+                              nextLabel="Siguiente">
+        </pagination-controls>
       </div>
     </div>
   </div>

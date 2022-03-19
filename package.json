@@ -28,6 +28,7 @@
     "chart.js": "^3.7.1",
     "moment": "^2.29.1",
     "ng2-charts": "^3.0.8",
+    "ngx-pagination": "^5.1.1",
     "open-iconic": "^1.1.1",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.4.4",

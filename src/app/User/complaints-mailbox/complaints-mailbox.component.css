@@ -95,4 +95,8 @@ h4 {
   .dia {
     height: 46px !important;
   }
-  
+
+.cardTecnico:hover {
+  cursor: pointer;
+  background-color: #F8F9F9;
+}

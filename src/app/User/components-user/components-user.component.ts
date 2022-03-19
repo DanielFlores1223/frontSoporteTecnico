@@ -36,7 +36,8 @@ export class ComponentsUserComponent implements OnInit {
     forename: '',
     role: '',
     surname: '',
-    area: ''
+    area: '',
+    id: ''
   }
 
   dateFilter: DateFilterInput = {

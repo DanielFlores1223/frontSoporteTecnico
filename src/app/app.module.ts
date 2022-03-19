@@ -29,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -48,7 +49,7 @@ import { MatSortModule } from '@angular/material/sort';
     UsersListComponent,
     TecnicosListComponent,
     PerfilTecnicosComponent,
-    ReportsTecnicosComponent
+    ReportsTecnicosComponent,
   ],
   imports: [
     HttpClientModule,
@@ -67,6 +68,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
+    NgxPaginationModule,
   ],
   providers: [FormsModule],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { UserIdentity } from '../Entities/user.interfaces';
 import { environment } from 'src/environments/environment';
 
@@ -21,8 +21,28 @@ export class UserService {
     let headers = new HttpHeaders({
       'Authorization': `${token}`
     })
-    
+
     return this.http.get<UserIdentity>(`${environment.api}/api/user/${id}`, { headers });
+
+  }
+
+  public getUserRole(role: string, token: string) {
+
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    })
+
+    return this.http.get<UserIdentity>(`${environment.api}/api/users/`, { headers, params: { role } });
+
+  }
+
+  public getUserSearch(search: string, role: string, token: string) {
+
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    })
+
+    return this.http.get<UserIdentity>(`${environment.api}/api/users/`, { headers, params: { search, role } });
 
   }
 

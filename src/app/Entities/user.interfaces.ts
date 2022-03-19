@@ -17,6 +17,7 @@ export interface UserIdentity {
   email: string
   role: string
   area?: string
+  id: string
 }
 
 export interface UserLogin {
