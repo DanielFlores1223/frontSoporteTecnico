@@ -5,7 +5,7 @@ import { ComplaintService } from '../../Services/complaint.service';
 import { UserService } from '../../Services/user.service';
 
 //interfaces
-import { Complaint } from '../../Entities/complaint.interfaces';
+import { CreateComplaint } from '../../Entities/complaint.interfaces';
 import { UserIdentity } from '../../Entities/user.interfaces';
 
 @Component({
@@ -23,12 +23,12 @@ export class ComplaintsMailboxComponent implements OnInit {
   p: number = 1;
   search: string = '';
 
-  createComplaint: Complaint = {
+  createComplaint: CreateComplaint = {
     createdBy: String(localStorage.getItem('id')),
     dateIncidence: '',
     message: '',
     status: 'No leido',
-    technicianId: ''
+    technicianId: '',
   
   }
 
