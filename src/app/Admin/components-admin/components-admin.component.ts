@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; 
+import Swal from 'sweetalert2';
 
 // services
 import { UserService } from '../../Services/user.service';
@@ -17,7 +19,8 @@ import { NotificationComplaint } from '../../Entities/notification.interface';
 export class ComponentsAdminComponent implements OnInit {
   
   constructor( private userS: UserService,
-               private complaintS: ComplaintService ) { }
+               private complaintS: ComplaintService,
+               private route : Router ) { }
 
   token: string = String( localStorage.getItem('token') );
   p: number = 1;
@@ -29,6 +32,7 @@ export class ComponentsAdminComponent implements OnInit {
   technicianModal: UserIdentity = { email: '',forename:'',id: '', role: '', surname: '', area: '' }
   complaintsModal: Complaint[] = [];
   btnVerTodos: boolean = false;
+
   
   ngOnInit(): void {
     this.getTechnicians();
@@ -43,11 +47,19 @@ export class ComponentsAdminComponent implements OnInit {
           this.technicians = res.result;
         } else {
           //hubo algun error
-          console.log('todo bien');
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor intentalo más tarde'
+          })
         }
       },
       err => {
-        console.log(err)
+        Swal.fire({
+          icon: 'error',
+          title: 'Algo salió mal',
+          text: 'Por favor intentalo más tarde'
+        })
       }
     )
   }
@@ -63,7 +75,11 @@ export class ComponentsAdminComponent implements OnInit {
            }
         },
         err => {
-
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor intentalo más tarde'
+          })
         }
       )
   }
@@ -106,7 +122,11 @@ export class ComponentsAdminComponent implements OnInit {
               
             },
             err => {
-              console.log(err);
+              Swal.fire({
+                icon: 'error',
+                title: 'Algo salió mal',
+                text: 'Por favor intentalo más tarde'
+              })
             }
           )
       
@@ -127,7 +147,11 @@ export class ComponentsAdminComponent implements OnInit {
             }
         },
         err => {
-            console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor intentalo más tarde'
+          })
         }
       )
   }
@@ -146,10 +170,19 @@ export class ComponentsAdminComponent implements OnInit {
             
             }else{
               //algo salio mal
+              Swal.fire({
+                icon: 'error',
+                title: 'Algo salió mal...',
+                text: 'Pr favor inténtalo más tarde'
+              })
             }
         },
         err => {
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor intentalo más tarde'
+          })
         }
       )
   
@@ -169,12 +202,24 @@ export class ComponentsAdminComponent implements OnInit {
 
             }else{
               //algo salio mal
-
+              Swal.fire({
+                icon: 'error',
+                title: 'Algo salió mal...',
+                text: 'Pr favor inténtalo más tarde'
+              })
             }
         },
         err => {
-          //algo salio mal
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal...',
+            text: 'Pr favor inténtalo más tarde'
+          })
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor intentalo más tarde'
+          })
         }
       )
   }
@@ -185,22 +230,48 @@ export class ComponentsAdminComponent implements OnInit {
       this.complaintS.updateStatus( c._id, 'leido', this.token ).subscribe(
         (res: any)=> {
           const { success, result } = res;
-          if(success) {
-             console.log('actualizado correctamente')
-          }
-          else{
-            //algo salio mal
+          if(!success) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Algo salió mal...',
+              text: 'Pr favor inténtalo más tarde'
+            });
           }
         },
         err => {
           //algo salio mal
-          console.log(err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Por favor inténtalo más tarde'
+          })
         }
       )
     } );
 
     this.getNotifications()
     
+  }
+
+  getUserSearch() {
+    if( this.search === '' ) return this.getTechnicians();
+
+    this.userS.getUserSearch(this.search, 'technician', this.token).subscribe(
+      (res:any) => {
+          if ( res.success ) {
+              this.technicians = res.result;
+          } 
+      },
+      err => {
+          // algo salio mal
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Pr favor inténtalo más tarde'
+          })
+      }
+    )
+      
   }
 
 }

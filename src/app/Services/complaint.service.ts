@@ -37,6 +37,7 @@ export class ComplaintService {
     return this.http.get(`${environment.api}${this.path}technicianAndStatus/${idTechnican}/${status}`, { headers });
   }
 
+
   public updateStatus( idComplaint: string, status: string, token: string ) {
       let headers = new HttpHeaders({
         'Authorization': `${token}`

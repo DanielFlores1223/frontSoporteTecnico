@@ -15,6 +15,7 @@ export class AppComponent {
   dataLogin: any;
   loginStatus: boolean = false;
   typeUser: string = '';
+  nombre: string = '';
 
   ngOnInit(): void {
 
@@ -26,7 +27,7 @@ export class AppComponent {
 
     this.loginStatus = this.userService.loginExito();
     this.typeUser = String(localStorage.getItem('typeUser'));
-
+    this.nombre = String(localStorage.getItem('nombre'));
   }
 
   getDataLogin() {
@@ -36,7 +37,9 @@ export class AppComponent {
       localStorage.setItem('id', this.dataLogin.result.id);
       localStorage.setItem('typeUser', this.dataLogin.result.role);
       localStorage.setItem('area', this.dataLogin.result.area);
-
+      localStorage.setItem('nombre', this.dataLogin.result.forename);
+     
+      this.nombre = String(localStorage.getItem('nombre'));
       this.loginStatus = this.userService.loginExito();
       this.typeUser = String(localStorage.getItem('typeUser'));
     },

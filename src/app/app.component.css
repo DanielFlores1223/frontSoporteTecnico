@@ -2,3 +2,14 @@
     height: 12%;
     margin-bottom: 1.2%;
 }
+.img-account-profile{
+    max-width: 50px;
+    float: right;
+    margin-right: 15px;
+}
+.nombre{
+    float: right!important;
+    margin-left: 80%;
+    margin-top: 20px;
+}
+

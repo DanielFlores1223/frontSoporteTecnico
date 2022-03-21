@@ -1,22 +1,33 @@
-<nav class="navbar navbar-light bg-light nav">
-  <div class="container-fluid "> 
-
-  </div>
-</nav>
-
 <div *ngIf="loginStatus; else noLogin">
-    <div [ngSwitch]="typeUser">
+  <div [ngSwitch]="typeUser">
       <div *ngSwitchCase="'employee'">
+        <div class="col-12">
+            <nav class="navbar navbar-light bg-light nav">
+              <p class="nombre">{{nombre}}</p>
+              <img class="img-account-profile rounded-circle" src="https://cdn-icons.flaticon.com/png/512/5079/premium/5079473.png?token=exp=1647843875~hmac=9fff7350f1dbc8f8f4fc39e188ba142b" alt="">  
+            </nav>
+        </div>
           <router-outlet></router-outlet>
       </div>
       <div *ngSwitchCase="'admin'">
+        <div class="col-12">
+          <nav class="navbar navbar-light bg-light nav">
+            <p class="nombre">{{nombre}}</p>
+            <img class="img-account-profile rounded-circle" src="https://cdn-icons.flaticon.com/png/512/5079/premium/5079473.png?token=exp=1647843875~hmac=9fff7350f1dbc8f8f4fc39e188ba142b" alt="">  
+          </nav>
+        </div>
         <app-navigation></app-navigation>
         <router-outlet></router-outlet>
     </div>
-    </div>
+  </div>
 </div>
 
 <ng-template #noLogin>
-  <app-login></app-login>
+  <nav class="navbar navbar-light bg-light nav">
+    <div class="container-fluid "> 
+  
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
 </ng-template>
 

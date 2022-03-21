@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router'; 
+import Swal from 'sweetalert2';
 //services
 import { ComplaintService } from '../../Services/complaint.service';
 import { UserService } from '../../Services/user.service';
@@ -16,7 +17,8 @@ import { UserIdentity } from '../../Entities/user.interfaces';
 export class ComplaintsMailboxComponent implements OnInit {
 
   constructor( private complaintS: ComplaintService,
-               private userS: UserService ) { }
+               private userS: UserService,
+               private route : Router ) { }
 
   token: string = String( localStorage.getItem('token') );
   technicanSelected: string = '';
@@ -42,7 +44,11 @@ export class ComplaintsMailboxComponent implements OnInit {
     
     //validando
     if( [ createdBy, dateIncidence, message, status, technicianId ].includes('') ){
-        //alerta error, todos los campos son obligatorios
+      Swal.fire({
+        icon: 'error',
+        title: 'Los campos son obligatorios',
+        text: 'Todos los campos son obligatorios'
+      })
         console.log(this.createComplaint);
         console.log('los campos son obligatorios')
         return;
@@ -52,9 +58,19 @@ export class ComplaintsMailboxComponent implements OnInit {
       ( res:any ) => {
           if(res.success) {
               //se registro correctamente
+              this.route.navigate(['/userHome']);
+              Swal.fire({
+                icon: 'success',
+                title: '¡Se registró correctamente!',
+                text: 'Recuerda que tus datos están protegidos y tu reporte es anónimo'
+              })
 
           } else {
-            //algo salio mal
+            Swal.fire({
+              icon: 'error',
+              title: 'Algo salió mal',
+              text: 'Intentalo de nuevo más tarde'
+            })
           }
       },
       err => {

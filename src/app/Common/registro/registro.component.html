@@ -20,12 +20,21 @@
                     <input
                     id="nombre-reg"
                       type="text"
-                      placeholder="Nombre Completo"
+                      placeholder="Nombres"
                       required
                       class=""
                     />
                   </div>
-                  
+                  <div class="input-field">
+                    <span><i class="bx bx-user"></i></span>
+                    <input
+                    id="nombre-reg"
+                      type="text"
+                      placeholder="Apellidos"
+                      required
+                      class=""
+                    />
+                  </div>
                   <div class="input-field">
                     <span><i class="bx bx-user"></i></span>
                     <input
@@ -47,7 +56,7 @@
                     class=""
                     [type]="hide ? 'password' : 'text'"
                   />
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <button class="view" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                   </div>
@@ -55,7 +64,7 @@
                
                 <div class="d-flex align-items-start"></div>
               </form>
-              <button routerLink="/login" class="btn btn-secondary btn-lg btn-block1" type="submit">
+              <button routerLink="/login" class="btn btn-primary btn-lg btn-block" type="submit">
                 Registrarme
               </button>
             

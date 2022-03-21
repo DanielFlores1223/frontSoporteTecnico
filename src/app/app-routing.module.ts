@@ -18,7 +18,7 @@ import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecni
 const routes: Routes = [
   /*Admin*/
   {path:'adminHome',component:ComponentsAdminComponent},
-  {path:'reports',component:ReportsComponent},
+  {path:'reports/:id',component:ReportsComponent},
   {path: 'usuarios', component:UsersListComponent},
   {path: 'perfilTecnico', component:PerfilTecnicosComponent},
   {path: 'reprtsTecnico', component:ReportsTecnicosComponent},

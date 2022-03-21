@@ -1,27 +1,29 @@
-
 <div class="card px-5">
   <div class="input-group">
     <h4 class="card-title">Mis Tickets</h4>
-    
-   
   </div>
-    
           <!--filtro de fechas-->
           <div class="row px-4 mb-4">
             <div class="col-md-12 col-lg-6">
               <div class=" md-form md-outline input-with-post-icon datepicker">
-                <label for="start">Start date:</label>
+                <label for="start">Fecha de inicio:</label>
                 <input class="form-label" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2022-12-31" [(ngModel)]="dateFilter.startDate" (change)="getTicketsByDates()" />
-                <label for="start"> To </label>
+                <label for="start"> A </label>
                 <input class="form-label" type="date" id="finish" name="trip-finish" value="2018-07-22" min="2018-01-01" max="2022-12-31" [(ngModel)]="dateFilter.endDate" (change)="getTicketsByDates()" />
               </div>
             </div>
             <div class="col-md-12 col-lg-3"></div>
             <div class="col-md-12 col-lg-3">
               <div class="input-group">
-                <input type="text" class="form-control prueba" placeholder="Buscar Ticket " aria-label="Recipient's username" aria-describedby="button-addon2">
-
-                <button class="btn btn-outline-primary mt-0" type="button" id="button-addon2">Button</button>
+                <input type="text" 
+                       class="form-control prueba" 
+                       placeholder="Buscar Ticket " 
+                       aria-label="Recipient's username" 
+                       aria-describedby="button-addon2"
+                       [(ngModel)]="search"
+                       (keyup)=" getSearchTicket()"
+                >
+                <button class="btn btn-outline-primary mt-0" type="button" id="button-addon2">Buscar</button>
               </div>
             </div>
 
@@ -69,21 +71,67 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTicketLvabel">Modal title</h5>
+        <h5 class="modal-title" id="modalTicketLvabel">{{ ticketInfo?.tittle }} </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div *ngIf="existeAsignacion; else noAsignacion">
-            <p>Si está asignado a un tecnico</p>
-            <p>Nombre tecnico: {{ tecnicoInfo?.surname }}</p>
+            <table class="table table-hover shopping-cart-wrap">
+              <thead class="text-muted">
+                <tr>
+                  <th scope="col" width="120">Datos del ticket</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <figure class="media">
+                      <figcaption class="media-body"><br>
+                        <h6 class="title text-truncate">Asignado al técnico: {{ tecnicoInfo?.forename }} {{ tecnicoInfo?.surname }}</h6>
+                        <p>correo electrónico: {{ tecnicoInfo?.email }}</p><br>
+                        <div class="row px-4 mb-4">
+                          <div class="col-6">
+                            <dl class="param param-inline small">
+                              <dt>Fecha: </dt>
+                              <dd>{{ (ticketInfo.dateRequest.split('T'))[0] }}</dd>
+                            </dl>
+                            <dl class="param param-inline small">
+                              <dt>Equipo:</dt>
+                              <dd>{{ ticketInfo?.device }}</dd>
+                            </dl>
+                            <dl class="param param-inline small">
+                              <dt>Servicio:</dt>
+                              <dd>{{ ticketInfo?.type }}</dd>
+                            </dl>
+                          </div>
+                          <div class="col-6">
+                            <dl class="param param-inline small">
+                              <dt>Copia de seguridad: </dt>
+                              <dd>{{ ticketInfo?.backup }}</dd>
+                            </dl>
+                            <dl class="param param-inline small">
+                              <dt>Observaciones:</dt>
+                              <dd>{{ ticketInfo?.observation }}</dd>
+                            </dl>
+                            <dl class="param param-inline small">
+                              <dt>Estado:</dt>
+                              <dd>{{ ticketInfo?.status }}</dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
         </div>
         <ng-template #noAsignacion>
-            <p>No hay ningun tecnico asignado</p>
+            <p>No hay ningun técnico asignado</p>
         </ng-template>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
       </div>
     </div>
   </div>

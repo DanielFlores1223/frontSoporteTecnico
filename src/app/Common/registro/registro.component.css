@@ -43,6 +43,14 @@ body {
     color: #686868;
     margin-bottom: 10px;
 }
+.view{
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+}
+mat-icon{
+    margin-bottom: 18px!important;
+}
 .input-field span i{
     width: 20px;
     height: 20px;

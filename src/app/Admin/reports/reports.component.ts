@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {  ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { ActivatedRoute, Params } from '@angular/router';
 
+import { UserIdentity } from '../../Entities/user.interfaces';
 
+import { TicketService } from '../../Services/ticket.service';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-reports',
@@ -11,123 +15,140 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
+  data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  technician: UserIdentity = { email: '', forename: '', id: '', role: '', surname: '', area: '' }
+  totalTickets: number = 0;
 
-  public lineChartData: ChartConfiguration['data'] = {
-    datasets: [
-      {
-        data: [ 65, 59, 80, 81, 56, 55, 40 ],
-        label: 'Series A',
-        backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: 'rgba(148,159,177,1)',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-        fill: 'origin',
-      },
-      {
-        data: [ 28, 48, 40, 19, 86, 27, 90 ],
-        label: 'Series B',
-        backgroundColor: 'rgba(77,83,96,0.2)',
-        borderColor: 'rgba(77,83,96,1)',
-        pointBackgroundColor: 'rgba(77,83,96,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(77,83,96,1)',
-        fill: 'origin',
-      },
-      {
-        data: [ 180, 480, 770, 90, 1000, 270, 400 ],
-        label: 'Series C',
-        yAxisID: 'y-axis-1',
-        backgroundColor: 'rgba(255,0,0,0.3)',
-        borderColor: 'red',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-        fill: 'origin',
-      }
-    ],
-    labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July' ]
-  };
-  public lineChartOptions: ChartConfiguration['options'] = {
-    elements: {
-      line: {
-        tension: 0.5
-      }
-    },
-    scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
-      x: {},
-      'y-axis-0':
-        {
-          position: 'left',
+  constructor( private rutaActiva: ActivatedRoute,
+               private ticketS: TicketService,
+               private userS: UserService ) { }
+
+    idTechnician: string = '';
+    token: string = String(localStorage.getItem('token'));
+
+
+    ngOnInit(): void {
+      this.idTechnician = this.rutaActiva.snapshot.params.id;
+      this.getReportByUserMonth();
+      this.getTechnicianInfo();
+    }
+
+    getReportByUserMonth() {
+      this.ticketS.getReportByUserMonth( this.idTechnician, '2022', this.token ).subscribe(
+        (res: any) => {
+          const { success, result } = res;
+          
+          if( success ) {
+            const { tickets } = result;
+
+            tickets.forEach( (t:any) => {
+                const { Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre } = t;
+                
+                if( Enero ) this.data[0] = Enero.length;
+                if( Febrero ) this.data[1] = Febrero.length;
+                if( Marzo ) this.data[2] = Marzo.length;
+                if( Abril ) this.data[3] = Abril.length;
+                if( Mayo ) this.data[4] = Mayo.length;
+                if( Junio ) this.data[5] = Junio.length;
+                if( Julio ) this.data[6] = Julio.length;
+                if( Agosto ) this.data[7] = Agosto.length;
+                if( Septiembre ) this.data[8] = Septiembre.length;
+                if( Octubre ) this.data[9] = Octubre.length;
+                if( Noviembre ) this.data[10] = Noviembre.length;
+                if( Diciembre ) this.data[11] = Diciembre.length;
+
+            });
+
+            //sumar todos los tickets del técnico
+            this.totalTickets = this.data.reduce((a, b) => a + b, 0);
+          }
+
+          //actualizar gráfica
+          this.chart?.update();
+          
         },
-      'y-axis-1': {
-        position: 'right',
-        grid: {
-          color: 'rgba(255,0,0,0.3)',
-        },
-        ticks: {
-          color: 'red'
+        err => {
+          console.log(err)
         }
-      }
-    },
-
-    plugins: {
-      legend: { display: true },
+      )
 
     }
+
+    getTechnicianInfo() {
+        this.userS.getUser( this.idTechnician, this.token ).subscribe(
+          (res: any) => {
+              const { success, result } = res;
+
+              if (success) {
+                  this.technician = result;
+
+              }else {
+                //algo salio mal
+              }
+          },
+          err => {
+            //algo salio mal
+            console.log(err);
+          }
+        )
+    }
+
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  public barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      x: {},
+      y: {
+        min: 0
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+     
+    }
+  };
+  public barChartType: ChartType = 'bar';
+  public barChartPlugins = [
+   
+  ];
+
+  public barChartData: ChartData<'bar'> = {
+    labels: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+    datasets: [
+      { data: this.data, label: 'Tickets', backgroundColor: 'rgba(52, 152, 219, 0.3)' },
+    ]
   };
 
-  public lineChartType: ChartType = 'line';
+  // events
+  public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    //console.log(event, active);
+  }
 
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
-  private static generateNumber(i: number): number {
-    return Math.floor((Math.random() * (i < 2 ? 100 : 1000)) + 1);
+  public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
+    //console.log(event, active);
   }
 
   public randomize(): void {
-    for (let i = 0; i < this.lineChartData.datasets.length; i++) {
-      for (let j = 0; j < this.lineChartData.datasets[i].data.length; j++) {
-        this.lineChartData.datasets[i].data[j] = ReportsComponent.generateNumber(i);
-      }
-    }
+    // Only Change 3 values
+    this.barChartData.datasets[0].data = [
+      Math.round(Math.random() * 100),
+      59,
+      80,
+      Math.round(Math.random() * 100),
+      56,
+      Math.round(Math.random() * 100),
+      40 ];
+
     this.chart?.update();
   }
-// events
-public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-  console.log(event, active);
-}
 
-public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
-  console.log(event, active);
-}
-
-public hideOne(): void {
-  const isHidden = this.chart?.isDatasetHidden(1);
-  this.chart?.hideDataset(1, !isHidden);
-}
-
-public pdfDowload(): void {
-  console.log('Desgarga')
-}
-
-public changeColor(): void {
-  this.lineChartData.datasets[2].borderColor = 'green';
-  this.lineChartData.datasets[2].backgroundColor = `rgba(0, 255, 0, 0.3)`;
-
-  this.chart?.update();
-}
-
-
- constructor() { }
-
-  ngOnInit(): void {
+  public descarga(){
+    console.log('descargando');
   }
-  shuffeData(){
-    
-  }
+ 
+
 }

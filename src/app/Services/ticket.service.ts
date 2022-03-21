@@ -39,4 +39,21 @@ export class TicketService {
   
   }
 
+  public searchTicket( assignedBy: string, tittle: string, token: string ) {
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    })
+
+    return this.http.post(`${environment.api}${this.path}regexTittle`, { assignedBy, tittle }, { headers });
+
+  }
+
+  public getReportByUserMonth( assignedTo: string, year: string, token: string ) {
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+
+    return this.http.post(`${environment.api}${this.path}reportByTechMonths`, { assignedTo, year }, { headers });
+  }
+
 }

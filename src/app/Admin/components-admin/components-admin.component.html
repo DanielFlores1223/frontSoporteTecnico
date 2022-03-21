@@ -13,12 +13,12 @@
 <div class="card">
   <div class="input-group ">
 
-    <h4 class="card-title">Técnicos</h4>
+    <h4 class="card-title">Listado de Técnicos</h4>
 
     <!--Boton de notificaciones-->
     <div class="dropdown ml-3 mt-4">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        Notificaciones ({{techNotifications.length}})
+      <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        Notificaciones sobre quejas ({{techNotifications.length}})
       </a>
     
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -29,13 +29,13 @@
              data-bs-target="#complaintsModal"
              *ngFor="let n of techNotifications" 
              (click)="getComplaintsNoRead(n)"> 
-                    {{ n.forename }} tiene quejas
+                    {{ n.forename }} Tiene quejas
           </a>
         </li>
 
         <li *ngIf="techNotifications.length == 0">
           <a class="dropdown-item"> 
-                   No hay notifications
+                   No hay notificaciones
           </a>
         </li>
 
@@ -45,9 +45,16 @@
     
     <div class="input-group buscar">
         <div class="form-outline">
-          <input type="search" id="search" name="search" class="form-control" placeholder="Buscar" />
+          <input type="search" 
+                 id="search" 
+                 name="search" 
+                 class="form-control" 
+                 placeholder="Buscar" 
+                 [(ngModel)]="search"
+                 (keyup)="getUserSearch()" 
+                 />
         </div>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" (click)="getUserSearch()">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -56,35 +63,32 @@
         <table class="table table-hover shopping-cart-wrap">
           <thead class="text-muted">
             <tr>
-              <th scope="col">Usuario</th>
-              <th scope="col" width="120">Datos Personales</th>
+              <th scope="col" width="120">Técnico</th>
+              <th scope="col" width="120">Asignaciones</th>
               <th scope="col" width="120">Estatus</th>
               <th scope="col" width="200" class="text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let t of technicians | paginate: { itemsPerPage: 3, currentPage: pTabla }">
+            <tr *ngFor="let t of technicians | paginate: { itemsPerPage: 4, currentPage: pTabla, id: 'pagTabla' }">
               <td>
                 <figure class="media">
-                  <div class="img-wrap mr-5">
-                      
-                  </div>
                   <figcaption class="media-body">
-                    <h6 class="title text-truncate">{{ t?.forename }}</h6>
+                    <h6 class="title text-truncate">Nombre: {{ t?.forename }}</h6>
                     <dl class="param param-inline small">
-                      <dt>Puesto:</dt>
-                      <dd>Reclutador</dd>
+                      <dt>Rol: </dt>
+                      <dd>{{ t?.role }}</dd>
                     </dl>
                     <dl class="param param-inline small">
-                      <dt>Área:</dt>
-                      <dd>Recursos Humanos</dd>
+                      <dt>Correo:</dt>
+                      <dd>{{ t?.email }}</dd>
                     </dl>
                   </figcaption>
                 </figure>
               </td>
               <td>
                 <figcaption class="media-body">
-                  <h6 class="title text-truncate">arnulfo@gmail.com</h6>
+                  <h6 class="title text-truncate">Correo: {{t?.email}}</h6>
                   <dl class="param param-inline small">
                     <dt>Teléfono:</dt>
                     <dd>3311665879</dd>
@@ -109,9 +113,6 @@
                 </figcaption>
               </td>
               <td class="text-right">
-                <a href="" class="btn btn-outline-secondary"
-                  ><i class="bx bx-low-vision"></i
-                ></a>
                 <!--Boton para ver todos las quejas de ese usuario-->
                 <a class="btn btn-outline-success" 
                    data-bs-toggle="modal" 
@@ -120,13 +121,14 @@
                  > 
                     <i class="bx bx-detail"></i>
                 </a>
-                <a href="" class="btn btn-outline-primary"
-                  ><i class="bx bxs-edit-alt"></i
-                ></a>
-                <a href="" class="btn btn-outline-danger"
-                  ><i class="bx bx-trash"></i
-                ></a>
+                <!--Boton para graficar por usuario-->
+                <a class="btn btn-outline-primary" 
+                   routerLink="/reports/{{ t.id }}"
+                 > 
+                 <i class='bx bx-line-chart'></i>
+                </a>
               </td>
+              
             </tr>
           </tbody>
         </table>
@@ -138,8 +140,9 @@
   <div class="row my-2">
       <div class="col-12 d-flex justify-content-center">
         <pagination-controls (pageChange)="pTabla = $event"
-                                previousLabel="Anterior"
-                                nextLabel="Siguiente">
+                              id="pagTabla"
+                              previousLabel="Anterior"
+                              nextLabel="Siguiente">
           </pagination-controls>
       </div>
   </div>
@@ -177,7 +180,7 @@
           <div *ngIf="complaintsModal.length > 0" class="row">
             <div class="card mx-auto p-0" 
                  style="margin-bottom: 2rem !important;" 
-                 *ngFor="let c of complaintsModal | paginate: { itemsPerPage: 3, currentPage: p }"
+                 *ngFor="let c of complaintsModal | paginate: { itemsPerPage: 3, currentPage: p, id: 'pagModal' }"
             >
               <h5 class="card-header">Fecha del incidente: {{ (c.dateIncidence.split('T'))[0] }}</h5>
               <div class="card-body">
@@ -203,6 +206,7 @@
         </button>
         <div *ngIf="complaintsModal.length > 0">
           <pagination-controls (pageChange)="p = $event"
+                                id="pagModal"
                                 previousLabel="Anterior"
                                 nextLabel="Siguiente">
           </pagination-controls>

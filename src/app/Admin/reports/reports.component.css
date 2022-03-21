@@ -17,7 +17,10 @@ h4 {
 .btn{
     padding: 10px;
     margin-bottom: 25px;
-    margin-left: 15px;
+    margin-top: -25px;
+    margin-left: 80%;
+    float: left;
+  width: 15%;
 }
 .button-row{
     margin-top: -15%;

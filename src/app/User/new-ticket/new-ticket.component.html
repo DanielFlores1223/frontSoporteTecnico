@@ -8,7 +8,7 @@
         <form>
           <div class="mb-3">
             <label class="small mb-1" for="inputUsername"
-              >Nombre del problema</label
+              >Nombre del problema *</label
             >
             <input
               class="form-control"
@@ -18,6 +18,7 @@
               placeholder="Titulo del incidente"
               value="Titulo"
               [(ngModel)]="createInterface.tittle"
+              required
             />
           </div>
 
@@ -64,8 +65,8 @@
             <div class="row gx-3 mb-3">
               <!-- Servicio-->
               <div class="col-md-3">
-                <label class="small mb-1" for="inputFirstName">Servicio</label>  
-                <select class="form-control form-select dia ml-3" id="servicio" name="servicio" aria-label=".form-select-lg example" [(ngModel)]="createInterface.type">
+                <label class="small mb-1" for="inputFirstName">Servicio *</label>  
+                <select class="form-control form-select dia ml-3" id="servicio" name="servicio" aria-label=".form-select-lg example" [(ngModel)]="createInterface.type" required>
                   <option selected>Tipo de ticket</option>
                   <option value="Internet">Internet</option>
                   <option value="Software">Software (Programas)</option>
@@ -75,7 +76,7 @@
               <!-- Fecha-->
               <div class="col-md-3">
                 <label class="small mb-1" for="fecha"
-                  >Fecha de solicitud (DD/MM/AAAA)</label>
+                  >Fecha de solicitud (DD/MM/AAAA) *</label>
                   <input
                       class="form-control dia"
                       type="date"
@@ -88,7 +89,7 @@
                   />
               </div>
               <div class="col-md-3">
-                <label class="small mb-1" for="inputLastName">Hora</label>
+                <label class="small mb-1" for="inputLastName">Hora *</label>
                   <input
                       class="form-control dia"
                       type="time"
@@ -100,7 +101,7 @@
             </div>
             <div class="mb-3">
               <label class="small mb-1" for="dispositivo"
-                >Identificación del equipo</label
+                >Tipo de equipo que presenta*</label
               >
               <select class="form-control form-select dia ml-3" id="dispositivo" name="dispositivo" aria-label=".form-select-lg example" [(ngModel)]="createInterface.device">
                 <option selected>Elige el dispositivo</option>
@@ -118,7 +119,7 @@
             <div class="row gx-3 mb-3">
               <!-- Form Group (Dependencia)-->
               <div class="col-md-4">
-                <label class="small mb-1" for="inputOrgName">Área que solicita</label>
+                <label class="small mb-1" for="inputOrgName">Área que solicita *</label>
                 <input
                   class="form-control"
                   id="area"
@@ -149,15 +150,14 @@
                     id="extencion"
                     name="extencion"
                     type="tel"
-                    placeholder="Enter your phone number"
-                    value="{{ interfaceArea.extensio }}"
+                    value="{{ interfaceArea.extension }}"
                     readonly
                   />
                 </div>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-4">
-                <label class="small mb-1" for="observaciones">Observaciónes</label>
+                <label class="small mb-1" for="observaciones">Observaciónes *</label>
                 <input
                   class="form-control"
                   id="observaciones"
@@ -169,7 +169,7 @@
                 /> 
               </div>
               <div class="col-md-4">
-                <label for="formFile" class="small mb-1">¿El procedimiento requiere copia de seguridad?</label>
+                <label for="formFile" class="small mb-1">¿El procedimiento requiere copia de seguridad? *</label><br>
               <div class="form-check form-check-inline mt-3">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  value="Si" [(ngModel)]="createInterface.backup">
                 <label class="form-check-label" for="inlineRadio1">Si</label>

@@ -7,26 +7,8 @@
                 <div class="card-header">Foto de perfil</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <img class="img-account-profile rounded-circle mb-2" src="https://cdn-icons.flaticon.com/png/512/5079/premium/5079473.png?token=exp=1647843875~hmac=9fff7350f1dbc8f8f4fc39e188ba142b" alt="">
                     <br>
-                </div>
-            </div>
-            <br>
-            <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Equipo Asignado ThinkPad</div>
-                <div class="card-body ">
-                    <div class="row gx-3 mb-3">
-                        <!-- Form Group -->
-                        <div class="col-md-6">
-                            <label class="small mb-1" for="modelo">Modelo</label>
-                            <input class="form-control" id="modelo" name="modelo" type="text" value="T14">
-                        </div>
-                        <!-- Form Group -->
-                        <div class="col-md-6">
-                            <label class="small mb-1" for="folio">Folio</label>
-                            <input class="form-control" id="folio" name="folio" type="text" value="R12621">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -41,13 +23,23 @@
                             <!-- Form Group (Nombre(s))-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">Nombre(s)</label>
-                                <input class="form-control" id="inputFirstName" name="inputFirstName" type="text"
-                                    placeholder="Escriba sus nombre(s)" value="">
+                                <input class="form-control" 
+                                       id="inputFirstName" 
+                                       name="inputFirstName" 
+                                       type="text"
+                                       placeholder="Escriba sus nombre(s)" 
+                                       [(ngModel)]="myInfo.forename"
+                                >
                             </div>
                             <!-- Form Group (Apellidos)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">Apellidos</label>
-                                <input class="form-control" id="inputLastName" name="inputLastName" type="text" value="">
+                                <input class="form-control" 
+                                       id="inputLastName" 
+                                       name="inputLastName" 
+                                       type="text" 
+                                       [(ngModel)]="myInfo.surname"
+                                >
                             </div>
                         </div>
                         <!-- Form Row        -->
@@ -61,42 +53,70 @@
                             <!-- Form Group (Área)-->
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputFirstName">Área</label>  
-                                <select class="form-control form-select dia ml-3" id="servicio" name="servicio" aria-label=".form-select-lg example">
-                                  <option selected>Seleccióna área</option>
-                                  <option value="Dirección">Dirección</option>
-                                  <option value="Administración">Administración</option>
-                                  <option value="Recursos Humanos">Recursos Humanos</option>
-                                  <option value="Reclutamiento">Reclutamiento</option>
-                                  <option value="Finanzas">Finanzas</option>
-                                  <option value="Logística">Logística</option>
-                                  <option value="Marketing">Marketing</option>
+                                <select class="form-control form-select dia ml-3" 
+                                        id="servicio" 
+                                        name="servicio" 
+                                        aria-label=".form-select-lg example"
+                                        [(ngModel)]="myInfo.area"
+                                >
+                                    
+                                <option *ngFor="let a of areas" value="{{a._id}}">{{ a.name }}</option>
+                                
+                                <!--<option selected>Seleccióna área</option>
+                                    <option value="Dirección">Dirección</option>
+                                    <option value="Administración">Administración</option>
+                                    <option value="Recursos Humanos">Recursos Humanos</option>
+                                    <option value="Reclutamiento">Reclutamiento</option>
+                                    <option value="Finanzas">Finanzas</option>
+                                    <option value="Logística">Logística</option>
+                                    <option value="Marketing">Marketing</option> -->
                                 </select>
                               </div>
                         </div>
                         <!-- Form Group (correo)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Correo electrónico</label>
-                            <input class="form-control" id="inputEmailAddress" name="inputEmailAddress" type="email"
-                                placeholder="Enter your email address" value="">
+                            <input class="form-control" 
+                                   id="inputEmailAddress" 
+                                   name="inputEmailAddress" 
+                                   type="email"
+                                   placeholder="Enter your email address" 
+                                   [(ngModel)]="myInfo.email"
+                            >
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                              <!-- Form Group (Cumpleaños)-->
                              <div class="col-md-6">
                                 <label class="small mb-1" for="phone">Teléfono</label>
-                                <input class="form-control" id="phone" type="text" name="phone"
-                                     value="3344554567">
+                                <input class="form-control" 
+                                       id="phone"
+                                       type="text" 
+                                       name="phone"
+                                       [(ngModel)]="area.numberPhone"
+                                >
                             </div>
                             <!-- Form Group (Extención)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="extencion">Extención</label>
-                                <input class="form-control" id="extencion" name="extencion" type="tel" value="11819">
+                                <input class="form-control" 
+                                       id="extencion" 
+                                       name="extencion" 
+                                       type="tel"
+                                       [(ngModel)]="area.extension"
+                                >
                             </div>
                            
                         </div>
                         
                         <!-- Save changes button-->
-                        <button class="btn boton-cargar " type="button">Guardar cambios</button>
+                        <button class="btn boton-cargar " 
+                                type="button"
+                                (click)="updatePerfil()"
+                        >
+                            Guardar cambios
+                        
+                        </button>
                         
                     </form>
                 </div>

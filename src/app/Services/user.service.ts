@@ -57,4 +57,13 @@ export class UserService {
     return !!localStorage.getItem('login');
   }
 
+  public updateUser( id: string, data: UserIdentity, token: string ) {
+    let headers = new HttpHeaders({
+      'Authorization': `${token}`
+    });
+
+    return this.http.put(`${environment.api}${this.path}/${id}`, data, { headers });
+
+  }
+
 }

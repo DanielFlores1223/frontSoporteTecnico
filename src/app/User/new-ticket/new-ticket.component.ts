@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { CreateTicketInput } from '../../Entities/ticket.interfaces';
 import { CreateBusinessUnit } from '../../Entities/businessUnits.interfaces';
 import { UserIdentity } from '../../Entities/user.interfaces';
+import { Router } from '@angular/router';
 
 //SERVICES
 import { TicketService } from '../../Services/ticket.service';
@@ -37,7 +38,7 @@ export class NewTicketComponent implements OnInit {
   };
 
   interfaceArea: CreateBusinessUnit = {
-    extensio: '',
+    extension: '',
     name: '',
     numberPhone: '',
     code: ''
@@ -56,6 +57,7 @@ export class NewTicketComponent implements OnInit {
   constructor( private ticketS : TicketService, 
                private userS: UserService, 
                private areaS: BusinessUnitService,
+               private route : Router,
              ) { }
 
   ngOnInit(): void {
@@ -69,23 +71,29 @@ export class NewTicketComponent implements OnInit {
         
         if(res.success){
             //se registro correctamente
-            console.log(res)
-            Swal.fire(
-              '¡Registro Exitoso!',
-              'El técnico aceptará tu servicio',
-              'success'
-            )
+            this.route.navigate(['/userHome']);
+            Swal.fire({
+              title: '¡Registro Exitoso!',
+              text: 'El técnico aceptará tu servicio',
+              icon: 'success',
+            })
+            
         
         }else {
            //no se registro correcte
-           Swal.fire(
-            'No se creó el ticket...',
-            'Algo salió mal, intentalo de nuevo más tarde',
-            'error'
-          )
+           Swal.fire({
+            icon: 'error',
+            title: 'No se creó el ticket...',
+            text: 'Algo salió mal, intentalo de nuevo más tarde'
+          })  
         }
     }, 
     err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se creó el ticket...',
+        text: 'Algo salió mal, intentalo de nuevo más tarde'
+      })  
       console.log(err);
     })
   }
