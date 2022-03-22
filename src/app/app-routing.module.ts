@@ -15,24 +15,30 @@ import { TecnicosListComponent } from './Admin/tecnicos-list/tecnicos-list.compo
 import { PerfilTecnicosComponent } from './Admin/perfil-tecnicos/perfil-tecnicos.component';
 import { ReportsTecnicosComponent } from './Admin/reports-tecnicos/reports-tecnicos.component';
 
+//GUARDS
+import { NoLoguedGuard } from './Guards/no-logued.guard';
+import { EmployeeGuard } from './Guards/employee.guard';
+import { AdminGuard } from './Guards/admin.guard';
+import { LoguedGuard } from './Guards/logued.guard';
+
 const routes: Routes = [
   /*Admin*/
-  {path:'adminHome',component:ComponentsAdminComponent},
-  {path:'reports/:id',component:ReportsComponent},
-  {path: 'usuarios', component:UsersListComponent},
-  {path: 'perfilTecnico', component:PerfilTecnicosComponent},
-  {path: 'reprtsTecnico', component:ReportsTecnicosComponent},
+  {path:'adminHome',component:ComponentsAdminComponent, canActivate:[NoLoguedGuard, AdminGuard],},
+  {path:'reports/:id',component:ReportsComponent, canActivate:[NoLoguedGuard, AdminGuard]},
+  {path: 'usuarios', component:UsersListComponent, canActivate:[NoLoguedGuard, AdminGuard]},
+  {path: 'perfilTecnico', component:PerfilTecnicosComponent, canActivate:[NoLoguedGuard, AdminGuard]},
+  {path: 'reprtsTecnico', component:ReportsTecnicosComponent, canActivate:[NoLoguedGuard, AdminGuard]},
   /*common*/
-  {path:'modal',component:GenericModalComponent},
-  {path:'login',component:LoginComponent},
-  {path:'navigation',component:NavigationComponent},
-  {path:'registro',component:RegistroComponent},
+  {path:'modal',component:GenericModalComponent, canActivate: [LoguedGuard]},
+  {path:'login',component:LoginComponent, canActivate: [LoguedGuard]},
+  {path:'navigation',component:NavigationComponent, canActivate: [LoguedGuard]},
+  {path:'registro',component:RegistroComponent, canActivate: [LoguedGuard]},
   /*User*/
-  {path:'userHome',component:ComponentsUserComponent},
-  {path:'perfilUser',component:PerfilUserComponent},
-  {path:'newTicket',component:NewTicketComponent},
-  {path:'buzon',component:ComplaintsMailboxComponent},
-  {path:'tecnicos',component:TecnicosListComponent},
+  {path:'userHome',component:ComponentsUserComponent, canActivate:[NoLoguedGuard, EmployeeGuard]},
+  {path:'perfilUser',component:PerfilUserComponent, canActivate:[NoLoguedGuard]},
+  {path:'newTicket',component:NewTicketComponent, canActivate:[NoLoguedGuard, EmployeeGuard]},
+  {path:'buzon',component:ComplaintsMailboxComponent, canActivate:[NoLoguedGuard, EmployeeGuard]},
+  {path:'tecnicos',component:TecnicosListComponent, canActivate:[NoLoguedGuard, EmployeeGuard]},
 /*Rutas por defecto*/
   {path:'',redirectTo:'login', pathMatch:'full'},
   {path:'**',redirectTo:'login', pathMatch:'full'}

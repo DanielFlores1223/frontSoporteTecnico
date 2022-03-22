@@ -5,11 +5,20 @@
 .img-account-profile{
     max-width: 50px;
     float: right;
-    margin-right: 15px;
+    margin-right: 20px;
+}
+.rounded-circle{
+    max-width: 50px;
+    margin-left: 20px;
 }
 .nombre{
     float: right!important;
-    margin-left: 80%;
+    margin-left: 60%;
     margin-top: 20px;
 }
-
+button{
+    margin-right: 20px;
+}
+.dropdown-menu li a{
+    cursor: pointer;
+}

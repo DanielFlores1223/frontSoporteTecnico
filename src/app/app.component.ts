@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './Services/user.service';
+import { Router } from '@angular/router'; 
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { UserService } from './Services/user.service';
 export class AppComponent {
   title = 'frontSoporteTecnico';
 
-  constructor( private userService: UserService ) {}
+  constructor( private userService: UserService, private route : Router, public _location: Location ) {}
 
   dataLogin: any;
   loginStatus: boolean = false;
@@ -48,6 +50,14 @@ export class AppComponent {
     })
   }
 
+ closeSesion(): void{
+  localStorage.clear();
+  this.route.navigateByUrl("/login", { skipLocationChange: true }).then(() => {
+	this.loginStatus = false;
+	this.route.navigate([decodeURI(this._location.path())]);
+
+  this.route.navigate(['/login']);
+
+  })
+ }
 }
-
-

@@ -74,7 +74,7 @@ export class NewTicketComponent implements OnInit {
             this.route.navigate(['/userHome']);
             Swal.fire({
               title: '¡Registro Exitoso!',
-              text: 'El técnico aceptará tu servicio',
+              text: 'Un técnico aceptará tu servicio',
               icon: 'success',
             })
             

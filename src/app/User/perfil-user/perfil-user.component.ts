@@ -35,13 +35,17 @@ export class PerfilUserComponent implements OnInit {
           if ( success ) {
             this.myInfo = result;
 
+            //modificamos nuevamente el id del area en local storage
+            localStorage.setItem('area', String(this.myInfo.area));
+            localStorage.setItem('nombre', String(this.myInfo.forename));
+
             if( this.myInfo.area )
                 this.getInfoArea( this.myInfo.area );
 
             else {
               Swal.fire({
                 icon: 'error',
-                title: 'algo salió mal',
+                title: 'Algo salió mal',
                 text: 'Reinténtalo más tarde!'
               })
             }
@@ -114,17 +118,20 @@ export class PerfilUserComponent implements OnInit {
 
   updatePerfil() {
     this.userS.updateUser( this.myId, this.myInfo, this.token ).subscribe(
-      (res: any) => {
+      async (res: any) => {
           const { success, result } = res;
 
           if (success) {
               // se actualizaron los datos correctamente
-              Swal.fire({
+              this.getMyInfo();
+              await Swal.fire({
                 icon: 'success',
                 title: 'Actuaslización exitosa!',
                 text: 'Los datos se actualizaron correctamente',
-              })
-              console.log('los datos se actualizaron')
+              });
+              
+              window.location.reload();
+              
           } else {
             //los datos no se actualizaron
             Swal.fire({
@@ -132,7 +139,7 @@ export class PerfilUserComponent implements OnInit {
               title: 'Algo salió mal',
               text: 'Los datos no se actualizaron correctamente',
             })
-            console.log('Los datos no se actualizaron correctamente');
+          
           }
       },
       err => {

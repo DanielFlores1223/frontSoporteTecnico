@@ -20,7 +20,26 @@ export interface UserIdentity {
   id: string
 }
 
+export interface CreateUser {
+  forename: string
+  surname: string
+  email: string
+  role: string
+  password: string,
+  area: string
+}
+
 export interface UserLogin {
   email: string
   password: string
+}
+
+export interface UserIdentityCountTickets {
+  forename: string
+  surname: string
+  email: string
+  role: string
+  area?: string
+  id: string,
+  count?: number
 }

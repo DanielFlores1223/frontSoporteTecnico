@@ -3,7 +3,7 @@ import {  ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { saveAs } from 'file-saver';
 import { UserIdentity } from '../../Entities/user.interfaces';
 
 import { TicketService } from '../../Services/ticket.service';
@@ -148,7 +148,31 @@ export class ReportsComponent implements OnInit {
 
   public descarga(){
     console.log('descargando');
+    /*this.ticketS.getXSLXByUserMonth('621c111a0c903452f5a46553', '2022', this.token).subscribe(
+      (res:any) => {
+        console.log('salio bien')
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    )*/
   }
- 
+  /*let headers = new Headers();
+  headers.append('Content-Type', 'application/vnd.openxmlformats');
+  this.http
+    .get(
+      `${pathToExcel}`,
+      { headers: headers, responseType: ResponseContentType.Blob }
+    )
+    .subscribe((res: any) => {
+      let blob = new Blob([res._body], { type: 'application/vnd.openxmlformats' });
+        let myUrl = document.createElement('a');
+        myUrl.href = window.URL.createObjectURL(blob);
+        myUrl.download = 'Log.xlsx';
+        let event = document.createEvent('MouseEvent');
+        event.initEvent('click', true, true);
+        myUrl.dispatchEvent(event);
+    });*/
 
 }

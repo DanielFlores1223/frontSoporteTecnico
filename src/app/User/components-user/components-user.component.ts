@@ -43,7 +43,8 @@ export class ComponentsUserComponent implements OnInit {
 
   dateFilter: DateFilterInput = {
     endDate: '',
-    startDate: ''
+    startDate: '',
+    assignedBy: ''
   }
 
   constructor( private ticketS : TicketService, 
@@ -59,9 +60,23 @@ export class ComponentsUserComponent implements OnInit {
       ( res: any ) => {
          
         if (res.success) {
+
+          if(res.result.length === 0) {
+            //aqui
+            Swal.fire({
+              title: 'Tu tablero está vacío!',
+              text: 'Cuando tengas tickets se mostrarán en tu tablero',
+              imageUrl: '../../../assets/Img/datos.jpeg',
+              imageWidth: 300,
+              imageHeight: 200,
+              imageAlt: 'Custom image',
+            })
+          }
+
           this.myTickets = res.result;
           console.log(this.myTickets)
-        }
+        
+        } 
 
       },
       err => {
@@ -83,30 +98,14 @@ export class ComponentsUserComponent implements OnInit {
                   console.log(this.ticketInfo.assignedTo)
                   this.userS.getUser(this.ticketInfo.assignedTo, this.token).subscribe( (res:any) => {
                       if(res.success) {
-                        //Obteniendo información del tecnico
-                        Swal.fire({
-                          title: 'Tu tablero está vacío!',
-                          text: 'Cuando tengas tickets se mostrarán en tu tablero',
-                          imageUrl: 'https://www.flaticon.es/icono-gratis/datos_5433094?related_id=5433094',
-                          imageWidth: 400,
-                          imageHeight: 200,
-                          imageAlt: 'Custom image',
-                        })
-                        
+                        //Obteniendo información del tecnico                        
                         this.tecnicoInfo = res.result;
                         console.log(this.tecnicoInfo);
                       }
                     },
                   err => {
                     //mensaje de error
-                    Swal.fire({
-                      title: 'Tu tablero está vacío!',
-                      text: 'Cuando tengas tickets se mostrarán en tu tablero',
-                      imageUrl: 'https://www.flaticon.es/icono-gratis/datos_5433094?related_id=5433094',
-                      imageWidth: 400,
-                      imageHeight: 200,
-                      imageAlt: 'Custom image',
-                    })
+                    console.log(err);
                     
                   } );
               
@@ -124,6 +123,7 @@ export class ComponentsUserComponent implements OnInit {
 
   getTicketsByDates() {
     const { startDate, endDate } = this.dateFilter;
+    this.dateFilter.assignedBy = this.myId;
       
       if ( [startDate, endDate].includes('') ) {
           //si está vacio aqui debe mostrar un error

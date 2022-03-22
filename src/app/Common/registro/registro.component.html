@@ -9,7 +9,7 @@
               alt="Sample image"
             />
           </div>
-          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-2">
             <div class="wrapper bg-white">
               <div class="h2 text-center">Help Desk</div>
               <div class="h4 text-muted text-center pt-2"></div>
@@ -21,8 +21,10 @@
                     id="nombre-reg"
                       type="text"
                       placeholder="Nombres"
+                      name="nombres"
                       required
                       class=""
+                      [(ngModel)]="employee.forename"
                     />
                   </div>
                   <div class="input-field">
@@ -30,9 +32,11 @@
                     <input
                     id="nombre-reg"
                       type="text"
+                      name="apellidos"
                       placeholder="Apellidos"
                       required
                       class=""
+                      [(ngModel)]="employee.surname"
                     />
                   </div>
                   <div class="input-field">
@@ -40,12 +44,35 @@
                     <input
                     id="correo-reg"
                       type="text"
+                      name="email"
                       placeholder="Correo Electrónico"
                       required
                       class=""
+                      [(ngModel)]="employee.email"
                     />
                   </div>
-                  
+                  <!-- Form Group (Área)-->
+                  <div class="col-md-3">
+                    <label class="small mb-1" for="inputFirstName">Área</label>  
+                    <select class="form-control form-select dia ml-3" 
+                            id="servicio" 
+                            name="servicio" 
+                            aria-label=".form-select-lg example"
+                            [(ngModel)]="employee.area"
+                    >
+                        
+                    <option *ngFor="let a of areas" value="{{a._id}}">{{ a.name }}</option>
+                    
+                    <!--<option selected>Seleccióna área</option>
+                        <option value="Dirección">Dirección</option>
+                        <option value="Administración">Administración</option>
+                        <option value="Recursos Humanos">Recursos Humanos</option>
+                        <option value="Reclutamiento">Reclutamiento</option>
+                        <option value="Finanzas">Finanzas</option>
+                        <option value="Logística">Logística</option>
+                        <option value="Marketing">Marketing</option> -->
+                    </select>
+                  </div>
                   
                   <div class="input-field" >
                     <span><i class="bx bx-lock-alt"></i></span>
@@ -53,7 +80,9 @@
                     type="password"
                     placeholder="Contraseña"
                     required
+                    name="password"
                     class=""
+                    [(ngModel)]="employee.password"
                     [type]="hide ? 'password' : 'text'"
                   />
                   <button class="view" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -64,10 +93,14 @@
                
                 <div class="d-flex align-items-start"></div>
               </form>
-              <button routerLink="/login" class="btn btn-primary btn-lg btn-block" type="submit">
-                Registrarme
-              </button>
-            
+              <div class="d-flex">
+                <button routerLink="/login" class="btn btn-secondary btn-lg btn-block1" type="submit">
+                  Iniciar Sesión
+                </button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="registerEmployee()">
+                  Registrarme
+                </button>
+              </div>
             </div>
           </div>
         </div>

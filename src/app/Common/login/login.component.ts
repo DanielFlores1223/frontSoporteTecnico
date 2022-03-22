@@ -21,6 +21,17 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    const { email, password } = this.userLogin;
+    if( [email, password].includes('') ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal',
+        text: 'Ambos campos son obligatorios'
+      });
+
+      return;
+    } 
+
     this.userService.login( this.userLogin.email, this.userLogin.password ).subscribe( (res:any) => {
 
       localStorage.setItem('token', res.headers.get('Authorization'));
@@ -41,7 +52,14 @@ export class LoginComponent implements OnInit {
             })
         } else if( res.body.result.role === 'admin' ) {
            this.route.navigate(['/adminHome'])
-
+           Swal.fire({
+            title: 'Bienvenido!',
+            text: 'Esprezza pendiente de ti',
+            imageUrl: '../../../assets/Img/logo.png',
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Custom image',
+          })
         }
 
       }else{

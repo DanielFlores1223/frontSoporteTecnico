@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -54,6 +55,25 @@ export class TicketService {
     });
 
     return this.http.post(`${environment.api}${this.path}reportByTechMonths`, { assignedTo, year }, { headers });
+  }
+
+  public getXSLXByUserMonth( assignedTo: string, year: string, token: string ) {
+
+    //`${environment.api}${this.path}reportByTechMonths?format=xlsx`
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/vnd.openxmlformats');
+    //FileSaver saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom })
+  /*return this.http.post(`${environment.api}${this.path}reportByTechMonths?format=xlsx`, {assignedTo, year}, { headers: headers, responseType: ResponseContentType.Blob })
+    .subscribe((res: any) => {
+      let blob = new Blob([res._body], { type: 'application/vnd.openxmlformats' });
+        let myUrl = document.createElement('a');
+        myUrl.href = window.URL.createObjectURL(blob);
+        myUrl.download = 'Log.xlsx';
+        let event = document.createEvent('MouseEvent');
+        event.initEvent('click', true, true);
+        myUrl.dispatchEvent(event);
+    });*/
+
   }
 
 }

@@ -30,5 +30,6 @@ export interface Ticket {
 
 export interface DateFilterInput {
      startDate: string;
-     endDate: string
+     endDate: string,
+     assignedBy: string
 }

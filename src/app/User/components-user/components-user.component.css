@@ -21,7 +21,6 @@ label {
 .btn{
   float: right;
   padding: 5px;
-  margin-top: 20px ;
 }
 .buscar{
   float: left;
@@ -54,4 +53,13 @@ a {
 .card-title {
   margin-left:2%!important;
   margin-top: 2%!important;
+}
+.intern{
+  min-height: 250px;
+}
+#btn{
+  position: absolute;
+   top: 80%;
+   margin-right: -10%!important;
+   padding: 5px;
 }

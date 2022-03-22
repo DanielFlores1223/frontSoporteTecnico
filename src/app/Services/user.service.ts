@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { UserIdentity } from '../Entities/user.interfaces';
+import { UserIdentity, CreateUser } from '../Entities/user.interfaces';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -55,6 +55,12 @@ export class UserService {
   loginExito(){
     this.changeLogin.emit(!!localStorage.getItem('login'));
     return !!localStorage.getItem('login');
+  }
+
+  public registerEmployee( data: CreateUser ) {
+  
+    return this.http.post(`${environment.api}${this.path}/`, data);
+  
   }
 
   public updateUser( id: string, data: UserIdentity, token: string ) {
