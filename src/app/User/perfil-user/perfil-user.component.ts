@@ -46,7 +46,7 @@ export class PerfilUserComponent implements OnInit {
               Swal.fire({
                 icon: 'error',
                 title: 'Algo salió mal',
-                text: 'Reinténtalo más tarde!'
+                text: '¡Reinténtalo más tarde!'
               })
             }
 
@@ -55,7 +55,7 @@ export class PerfilUserComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: 'Algo salió mal',
-              text: 'Reinténtalo más tarde!'
+              text: '¡Reinténtalo más tarde!'
             })
           }
           
@@ -81,7 +81,7 @@ export class PerfilUserComponent implements OnInit {
                 Swal.fire({
                   icon: 'error',
                   title: 'Error de área',
-                  text: 'Algo salió mal, verifica los datos!'
+                  text: '¡Algo salió mal, verifica los datos!'
                 })
               }
           }, 
@@ -126,7 +126,7 @@ export class PerfilUserComponent implements OnInit {
               this.getMyInfo();
               await Swal.fire({
                 icon: 'success',
-                title: 'Actuaslización exitosa!',
+                title: '¡Actualización exitosa!',
                 text: 'Los datos se actualizaron correctamente',
               });
               

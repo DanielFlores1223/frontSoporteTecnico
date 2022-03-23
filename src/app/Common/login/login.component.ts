@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         if( res.body.result.role === 'employee' ) {
             this.route.navigate(['/userHome']);
             Swal.fire({
-              title: 'Bienvenido!',
+              title: '¡Bienvenido!',
               text: 'Esprezza pendiente de ti',
               imageUrl: '../../../assets/Img/logo.png',
               imageWidth: 400,
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         } else if( res.body.result.role === 'admin' ) {
            this.route.navigate(['/adminHome'])
            Swal.fire({
-            title: 'Bienvenido!',
+            title: '¡Bienvenido!',
             text: 'Esprezza pendiente de ti',
             imageUrl: '../../../assets/Img/logo.png',
             imageWidth: 400,

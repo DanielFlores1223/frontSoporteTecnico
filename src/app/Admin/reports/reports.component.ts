@@ -148,16 +148,38 @@ export class ReportsComponent implements OnInit {
 
   public descarga(){
     console.log('descargando');
+    //this.ticketS.getXSLXByUserMonth('621c111a0c903452f5a46553', '2022', this.token)
+
+    this.ticketS.getXSLXByUserMonth( this.idTechnician, '2022', this.token );
+    
+
     /*this.ticketS.getXSLXByUserMonth('621c111a0c903452f5a46553', '2022', this.token).subscribe(
       (res:any) => {
-        console.log('salio bien')
-        console.log(res);
+        //console.log('salio bien')
+        //console.log(res);
+        this.manageExcelFile(res, 'reporteOtro')
       },
       err => {
         console.log(err);
       }
     )*/
   }
+
+  manageExcelFile( response:any, filename: string ) {
+    const dataType = response.type;
+    const binaryData = [];
+    binaryData.push(response);
+
+    const filePath = window.URL.createObjectURL(new Blob(binaryData, { type: dataType}) );
+    const downloadLink = document.createElement('a');
+    downloadLink.href = filePath;
+    downloadLink.setAttribute('download', filename);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+  }
+
+
   /*let headers = new Headers();
   headers.append('Content-Type', 'application/vnd.openxmlformats');
   this.http

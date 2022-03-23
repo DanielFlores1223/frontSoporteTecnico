@@ -243,7 +243,7 @@ export class ComponentsAdminComponent implements OnInit {
               Swal.fire({
                 icon: 'error',
                 title: 'Algo salió mal...',
-                text: 'Pr favor inténtalo más tarde'
+                text: 'Por favor inténtalo más tarde'
               })
             }
         },
@@ -268,7 +268,7 @@ export class ComponentsAdminComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: 'Algo salió mal...',
-              text: 'Pr favor inténtalo más tarde'
+              text: 'Por favor inténtalo más tarde'
             });
           }
         },
@@ -302,7 +302,7 @@ export class ComponentsAdminComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Algo salió mal',
-            text: 'Pr favor inténtalo más tarde'
+            text: 'Por favor inténtalo más tarde'
           })
       }
     )

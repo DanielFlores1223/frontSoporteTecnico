@@ -35,7 +35,7 @@ export class NavigationComponent implements OnInit {
                   await Swal.fire({
                     icon: 'error',
                     title: 'Error con tus credenciales',
-                    text: 'Inicie de nuevo sesión'
+                    text: 'Inicie sesión de nuevo'
                   }) 
 
                   this.route.navigate(['/login'])

@@ -64,7 +64,7 @@ export class ComponentsUserComponent implements OnInit {
           if(res.result.length === 0) {
             //aqui
             Swal.fire({
-              title: 'Tu tablero está vacío!',
+              title: '¡Tu tablero está vacío!',
               text: 'Cuando tengas tickets se mostrarán en tu tablero',
               imageUrl: '../../../assets/Img/datos.jpeg',
               imageWidth: 300,

@@ -50,7 +50,28 @@
                                 <input class="form-control" id="inputOrgName" name="dependencia" type="text"
                                     placeholder="Esprezza" value="Esprezza">
                             </div>
-                            
+                                 <!-- Form Group (Área)-->
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName">Área</label>  
+                    <select class="form-control form-select dia ml-3" 
+                            id="servicio" 
+                            name="servicio" 
+                            aria-label=".form-select-lg example"
+                            [(ngModel)]="myInfo.area"
+                    >
+                        
+                    <option *ngFor="let a of areas" value="{{a._id}}">{{ a.name }}</option>
+                    
+                    <!--<option selected>Seleccióna área</option>
+                        <option value="Dirección">Dirección</option>
+                        <option value="Administración">Administración</option>
+                        <option value="Recursos Humanos">Recursos Humanos</option>
+                        <option value="Reclutamiento">Reclutamiento</option>
+                        <option value="Finanzas">Finanzas</option>
+                        <option value="Logística">Logística</option>
+                        <option value="Marketing">Marketing</option> -->
+                    </select>
+                  </div>
                         </div>
                         <!-- Form Group (correo)-->
                         <div class="mb-3">
@@ -63,6 +84,7 @@
                                    [(ngModel)]="myInfo.email"
                             >
                         </div>
+                   
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                              <!-- Form Group (Cumpleaños)-->
